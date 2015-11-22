@@ -14,12 +14,10 @@ A PHP library to calculate and check the italian tax code (codice fiscale).
 Install
 -------
 
-You can install the library using [composer](https://getcomposer.org/). Add these lines in your composer.json:
+You can install the library using [composer](https://getcomposer.org/):
 
-```json
-"require" : {
-	"davidepastore/codice-fiscale" : "v0.1.0"
-}
+```sh
+$ composer require davidepastore/codice-fiscale
 ```
 
 How to use
