@@ -1,7 +1,8 @@
 codice-fiscale
 ======
 
-[![Build Status](https://travis-ci.org/DavidePastore/codice-fiscale.svg?branch=master)](https://travis-ci.org/DavidePastore/codice-fiscale)
+[![Build Status][ico-travis]][link-travis]
+[![Quality Score][ico-code-quality]][link-code-quality]
 
 
 A PHP library to calculate and check the italian tax code (codice fiscale).
@@ -169,3 +170,11 @@ Issues
 -------
 
 If you have issues, just open one [here](https://github.com/DavidePastore/codice-fiscale/issues).
+
+
+
+[ico-travis]: https://travis-ci.org/DavidePastore/codice-fiscale.svg?branch=master
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/davidepastore/codice-fiscale.svg?style=flat-square
+
+[link-travis]: https://travis-ci.org/DavidePastore/codice-fiscale
+[link-code-quality]: https://scrutinizer-ci.com/g/DavidePastore/codice-fiscale
