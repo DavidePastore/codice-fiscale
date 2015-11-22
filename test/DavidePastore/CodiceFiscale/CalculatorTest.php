@@ -70,6 +70,19 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
+                'name' => 'Davide',
+                'surname' => 'Rossi',
+                'birthDate' => '1989-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
+              )
+            ),
+            0,
+            'RSSDVD89T10A562S',
+          ),
+          array(
+            new Subject(
+              array(
                 'name' => 'Maria',
                 'surname' => 'Montessori',
                 'birthDate' => '1870-08-31',

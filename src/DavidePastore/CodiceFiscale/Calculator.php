@@ -208,7 +208,7 @@ class Calculator
         if (strlen($consonants) > 3) {
             $result = $consonants[0].$consonants[2].$consonants[3];
         } elseif (strlen($consonants) == 3) {
-            $result = implode($consonants);
+            $result = $consonants;
         } else {
             $result = $this->calculateSmallString($consonants, $this->subject->getName());
         }
