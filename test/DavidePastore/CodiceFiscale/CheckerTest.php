@@ -37,7 +37,7 @@ class CheckerTest extends \PHPUnit_Framework_TestCase {
               )
             ),
             "RSSMRA85T10A562S",
-            Checker::ALL_OMOCODIA_LEVELS,
+            0,
             true
           ),
           array(
