@@ -2,6 +2,7 @@ codice-fiscale
 ======
 
 [![Build Status][ico-travis]][link-travis]
+[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
 
 
@@ -174,7 +175,9 @@ If you have issues, just open one [here](https://github.com/DavidePastore/codice
 
 
 [ico-travis]: https://travis-ci.org/DavidePastore/codice-fiscale.svg?branch=master
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/DavidePastore/codice-fiscale.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/davidepastore/codice-fiscale.svg?style=flat-square
 
 [link-travis]: https://travis-ci.org/DavidePastore/codice-fiscale
+[link-scrutinizer]: https://scrutinizer-ci.com/g/DavidePastore/codice-fiscale/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/DavidePastore/codice-fiscale
