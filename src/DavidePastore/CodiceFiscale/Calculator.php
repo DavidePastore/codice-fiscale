@@ -191,8 +191,7 @@ class Calculator
         if (strlen($consonants) > 2) {
             $result = substr($consonants, 0, 3);
         } else {
-            $vowels = str_replace(str_split($consonants), '', strtoupper($this->subject->getSurname()));
-            $result = substr($consonants.$vowels.'XXX', 0, 3);
+            $result = $this->calculateSmallString($consonants, $this->subject->getSurname());
         }
 
         return $result;
@@ -211,10 +210,22 @@ class Calculator
         } elseif (strlen($consonants) == 3) {
             $result = implode($consonants);
         } else {
-            $vowels = str_replace(str_split($consonants), '', strtoupper($this->subject->getName()));
-            $result = substr($consonants.$vowels.'XXX', 0, 3);
+            $result = $this->calculateSmallString($consonants, $this->subject->getName());
         }
 
+        return $result;
+    }
+    
+    /**
+     * Calculate small string for the given parameters (used by name and surname).
+     * @param $consonants A consonants string.
+     * @param $string The small string.
+     * @returns Returns the calculated result for the small string.
+     */
+    private function calculateSmallString($consonants, $string)
+    {
+        $vowels = str_replace(str_split($consonants), '', strtoupper($string));
+        $result = substr($consonants.$vowels.'XXX', 0, 3);
         return $result;
     }
 
