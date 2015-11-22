@@ -1,4 +1,4 @@
-ipinfo
+codice-fiscale
 ======
 
 [![Build Status](https://travis-ci.org/DavidePastore/codice-fiscale.svg?branch=master)](https://travis-ci.org/DavidePastore/codice-fiscale)
