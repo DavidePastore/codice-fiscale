@@ -167,6 +167,12 @@ echo $response; // true
 ```
 
 
+Test
+----
+
+``` bash
+$ phpunit
+```
 
 
 Issues
