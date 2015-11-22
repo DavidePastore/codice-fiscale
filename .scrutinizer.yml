@@ -1,6 +1,6 @@
 filter:
     excluded_paths:
-        - tests/*
+        - test/*
 checks:
     php: true
 
