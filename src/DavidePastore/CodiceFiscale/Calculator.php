@@ -7,7 +7,8 @@ namespace DavidePastore\CodiceFiscale;
  * @author davidepastore
  *
  */
-class Calculator {
+class Calculator
+{
     
     private $subject;
     private $omocodiaLevel = 0;
@@ -269,5 +270,4 @@ class Calculator {
         }
         return $temporaryCodiceFiscale;
     }
-
 }

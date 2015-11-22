@@ -7,7 +7,8 @@ namespace DavidePastore\CodiceFiscale;
  * @author davidepastore
  *
  */
-class Subject {
+class Subject
+{
     
     private $name;
     private $surname;

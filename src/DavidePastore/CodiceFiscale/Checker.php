@@ -7,7 +7,8 @@ namespace DavidePastore\CodiceFiscale;
  * @author davidepastore
  *
  */
-class Checker {
+class Checker
+{
     
     private $subject;
     private $omocodiaLevel = Checker::ALL_OMOCODIA_LEVELS;
@@ -50,5 +51,4 @@ class Checker {
         }
         return in_array($this->codiceFiscaleToCheck, $values);
     }
-
 }
