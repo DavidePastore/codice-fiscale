@@ -234,21 +234,27 @@ class Calculator
      * @returns Returns the check digit part of the codice fiscale.
      */
     private function calculateCheckDigit($temporaryCodiceFiscale){
-        $sumEven = 0;
-		$sumOdd = 0;
-		for ($i = 0; $i < 15; $i = $i + 2)
+        $sumEven = $this->calculateSumByDictionary($temporaryCodiceFiscale, $this->even, 1);
+        $sumOdd = $this->calculateSumByDictionary($temporaryCodiceFiscale, $this->odd, 0);
+        return chr(($sumOdd + $sumEven) % 26 + 65);
+    }
+    
+    /**
+     * Calculate the sum by the given dictionary for the given temporary codice fiscale.
+     * @param $temporaryCodiceFiscale The temporary codice fiscale.
+     * @param $dictionaryArray The dictionary array.
+     * @param $i The start index value.
+     * @returns Returns the sum by the given dictionary for the given temporary codice fiscale.
+     *
+     */
+    private function calculateSumByDictionary($temporaryCodiceFiscale, $dictionaryArray, $i){
+        $sum = 0;
+        for (; $i < 15; $i = $i + 2)
 		{
 			$k = $temporaryCodiceFiscale{$i};
-			$sumOdd = $sumOdd + $this->odd[$k];
+			$sum = $sum + $dictionaryArray[$k];
 		}
-	
-		for ($i = 1; $i < 15; $i = $i + 2)
-		{
-			$k = $temporaryCodiceFiscale{$i};
-			$sumEven = $sumEven + $this->even[$k];
-		}
-        
-		return chr(($sumOdd + $sumEven) % 26 + 65);
+        return $sum;
     }
     
     /**
