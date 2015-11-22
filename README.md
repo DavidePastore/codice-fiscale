@@ -127,8 +127,8 @@ $subject = new Subject(
 );
 
 $checker = new Checker($subject, array(
-  "codiceFiscaleToCheck" => $codiceFiscaleToCheck,
-  "omocodiaLevel" => $omocodiaLevel
+  "codiceFiscaleToCheck" => "RSSMRA85T10A562S",
+  "omocodiaLevel" => 0
 ));
 
 $response = $checker->check();
@@ -154,7 +154,7 @@ $subject = new Subject(
 );
 
 $checker = new Checker($subject, array(
-  "codiceFiscaleToCheck" => $codiceFiscaleToCheck,
+  "codiceFiscaleToCheck" => "SNTRRT63E08H50ML",
   "omocodiaLevel" => Checker::ALL_OMOCODIA_LEVELS
 ));
 
