@@ -30,11 +30,11 @@ class Subject
     {
         //Set properties
         if (array_key_exists('name', $properties)) {
-            $this->name = strtoupper($properties['name']);
+            $this->name = $properties['name'];
         }
 
         if (array_key_exists('surname', $properties)) {
-            $this->surname = strtoupper($properties['surname']);
+            $this->surname = $properties['surname'];
         }
 
         if (array_key_exists('birthDate', $properties)) {
@@ -45,7 +45,7 @@ class Subject
         }
 
         if (array_key_exists('gender', $properties)) {
-            $this->gender = strtoupper($properties['gender']);
+            $this->gender = $properties['gender'];
         }
 
         if (array_key_exists('belfioreCode', $properties)) {

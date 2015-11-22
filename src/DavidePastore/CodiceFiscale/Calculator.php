@@ -187,11 +187,11 @@ class Calculator
      */
     private function calculateSurname()
     {
-        $consonants = str_replace($this->vowels, '', $this->subject->getSurname());
+        $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getSurname()));
         if (strlen($consonants) > 2) {
             $result = substr($consonants, 0, 3);
         } else {
-            $vowels = str_replace(str_split($consonants), '', $this->subject->getSurname());
+            $vowels = str_replace(str_split($consonants), '', strtoupper($this->subject->getSurname()));
             $result = substr($consonants.$vowels.'XXX', 0, 3);
         }
 
@@ -205,13 +205,13 @@ class Calculator
      */
     private function calculateName()
     {
-        $consonants = str_replace($this->vowels, '', $this->subject->getName());
+        $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getName()));
         if (strlen($consonants) > 3) {
             $result = $consonants[0].$consonants[2].$consonants[3];
         } elseif (strlen($consonants) == 3) {
             $result = implode($consonants);
         } else {
-            $vowels = str_replace(str_split($consonants), '', $this->subject->getName());
+            $vowels = str_replace(str_split($consonants), '', strtoupper($this->subject->getName()));
             $result = substr($consonants.$vowels.'XXX', 0, 3);
         }
 
@@ -228,7 +228,7 @@ class Calculator
         $year = $this->subject->getBirthDate()->format('y');
         $month = $this->months[$this->subject->getBirthDate()->format('n')];
         $day = $this->subject->getBirthDate()->format('d');
-        if ($this->subject->getGender() == 'F') {
+        if (strtoupper($this->subject->getGender()) == 'F') {
             $day += 40;
         }
 
@@ -242,7 +242,7 @@ class Calculator
      */
     private function calculateBelfioreCode()
     {
-        return $this->subject->getBelfioreCode();
+        return strtoupper($this->subject->getBelfioreCode());
     }
 
     /**
