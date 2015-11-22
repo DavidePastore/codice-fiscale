@@ -1,246 +1,253 @@
 <?php
+
 namespace DavidePastore\CodiceFiscale;
 
 /**
  * Test for the Calculator class.
- * @author davidepastore
  *
+ * @author davidepastore
  */
-class CalculatorTest extends \PHPUnit_Framework_TestCase {
-    
+class CalculatorTest extends \PHPUnit_Framework_TestCase
+{
     /**
-	 * Test for calculate.
+     * Test for calculate.
+     *
      * @dataProvider calculateProvider
-	 */
-	public function testCalculate($subject, $omocodiaLevel, $expectedCodiceFiscale){
-		$calculator = new Calculator($subject, array(
-            "omocodiaLevel" => $omocodiaLevel
+     */
+    public function testCalculate($subject, $omocodiaLevel, $expectedCodiceFiscale)
+    {
+        $calculator = new Calculator($subject, array(
+            'omocodiaLevel' => $omocodiaLevel,
         ));
-		$actual = $calculator->calculate();
-		$this->assertEquals($expectedCodiceFiscale, $actual);
-	}
-    
+        $actual = $calculator->calculate();
+        $this->assertEquals($expectedCodiceFiscale, $actual);
+    }
+
     /**
-	 * Test for calculateAllPossibilities.
+     * Test for calculateAllPossibilities.
+     *
      * @dataProvider calculateAllPossibilitiesProvider
-	 */
-	public function testCalculateAllPossibilities($subject, $expected){
+     */
+    public function testCalculateAllPossibilities($subject, $expected)
+    {
         $calculator = new Calculator($subject);
         $actual = $calculator->calculateAllPossibilities();
-		$this->assertEquals($expected, $actual);
-	}
-    
+        $this->assertEquals($expected, $actual);
+    }
+
     /**
      * The calculate data provider.
      */
-    public function calculateProvider(){
+    public function calculateProvider()
+    {
         return array(
           array(
             new Subject(
               array(
-                "name" => "Mario",
-                "surname" => "Rossi",
-                "birthDate" => "1985-12-10",
-                "gender" => "M",
-                "belfioreCode" => "A562"
+                'name' => 'Mario',
+                'surname' => 'Rossi',
+                'birthDate' => '1985-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
               )
             ),
             0,
-            "RSSMRA85T10A562S"
+            'RSSMRA85T10A562S',
           ),
           array(
             new Subject(
               array(
-                "name" => "Roberto",
-                "surname" => "Santini",
-                "birthDate" => "1963-05-08",
-                "gender" => "M",
-                "belfioreCode" => "H501"
+                'name' => 'Roberto',
+                'surname' => 'Santini',
+                'birthDate' => '1963-05-08',
+                'gender' => 'M',
+                'belfioreCode' => 'H501',
               )
             ),
             0,
-            "SNTRRT63E08H501T"
+            'SNTRRT63E08H501T',
           ),
           array(
             new Subject(
               array(
-                "name" => "Maria",
-                "surname" => "Montessori",
-                "birthDate" => "1870-08-31",
-                "gender" => "F",
-                "belfioreCode" => "C615"
+                'name' => 'Maria',
+                'surname' => 'Montessori',
+                'birthDate' => '1870-08-31',
+                'gender' => 'F',
+                'belfioreCode' => 'C615',
               )
             ),
             0,
-            "MNTMRA70M71C615I"
+            'MNTMRA70M71C615I',
           ),
           array(
             new Subject(
               array(
-                "name" => "Mario",
-                "surname" => "Rossi",
-                "birthDate" => new \DateTime('1985-12-10'),
-                "gender" => "M",
-                "belfioreCode" => "A562"
+                'name' => 'Mario',
+                'surname' => 'Rossi',
+                'birthDate' => new \DateTime('1985-12-10'),
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
               )
             ),
             0,
-            "RSSMRA85T10A562S"
+            'RSSMRA85T10A562S',
           ),
           array(
             new Subject(
               array(
-                "name" => "Gianfranco",
-                "surname" => "Rossi",
-                "birthDate" => "1985-12-10",
-                "gender" => "M",
-                "belfioreCode" => "A562"
+                'name' => 'Gianfranco',
+                'surname' => 'Rossi',
+                'birthDate' => '1985-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
               )
             ),
             0,
-            "RSSGFR85T10A562I"
+            'RSSGFR85T10A562I',
           ),
           array(
             new Subject(
               array(
-                "name" => "Mario",
-                "surname" => "Fo",
-                "birthDate" => "1985-12-10",
-                "gender" => "M",
-                "belfioreCode" => "A562"
+                'name' => 'Mario',
+                'surname' => 'Fo',
+                'birthDate' => '1985-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
               )
             ),
             0,
-            "FOXMRA85T10A562G"
+            'FOXMRA85T10A562G',
           ),
           array(
             new Subject(
               array(
-                "name" => "",
-                "surname" => "Rossi",
-                "birthDate" => "1985-12-10",
-                "gender" => "M",
-                "belfioreCode" => "A562"
+                'name' => '',
+                'surname' => 'Rossi',
+                'birthDate' => '1985-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
               )
             ),
             0,
-            "RSSXXX85T10A562R"
+            'RSSXXX85T10A562R',
           ),
           array(
             new Subject(
               array(
-                "name" => "Mario",
-                "surname" => "",
-                "birthDate" => "1985-12-10",
-                "gender" => "M",
-                "belfioreCode" => "A562"
+                'name' => 'Mario',
+                'surname' => '',
+                'birthDate' => '1985-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
               )
             ),
             0,
-            "XXXMRA85T10A562B"
+            'XXXMRA85T10A562B',
           ),
           array(
             new Subject(
               array(
-                "name" => "",
-                "surname" => "",
-                "birthDate" => "1985-12-10",
-                "gender" => "M",
-                "belfioreCode" => "A562"
+                'name' => '',
+                'surname' => '',
+                'birthDate' => '1985-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
               )
             ),
             0,
-            "XXXXXX85T10A562A"
+            'XXXXXX85T10A562A',
           ),
           array(
             new Subject(
               array(
-                "name" => "Roberto",
-                "surname" => "Santi",
-                "birthDate" => "1963-05-08",
-                "gender" => "M",
-                "belfioreCode" => "H501"
+                'name' => 'Roberto',
+                'surname' => 'Santi',
+                'birthDate' => '1963-05-08',
+                'gender' => 'M',
+                'belfioreCode' => 'H501',
               )
             ),
             1,
-            "SNTRRT63E08H50ML"
+            'SNTRRT63E08H50ML',
           ),
           array(
             new Subject(
               array(
-                "name" => "Mario",
-                "surname" => "Rossi",
-                "birthDate" => "1985-12-10",
-                "gender" => "M",
-                "belfioreCode" => "A562"
+                'name' => 'Mario',
+                'surname' => 'Rossi',
+                'birthDate' => '1985-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
               )
             ),
             1,
-            "RSSMRA85T10A56NH"
+            'RSSMRA85T10A56NH',
           ),
           array(
             new Subject(
               array(
-                "name" => "Mario",
-                "surname" => "Rossi",
-                "birthDate" => "1985-12-10",
-                "gender" => "M",
-                "belfioreCode" => "A562"
+                'name' => 'Mario',
+                'surname' => 'Rossi',
+                'birthDate' => '1985-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
               )
             ),
             3,
-            "RSSMRA85T10ARSNO"
-          )
+            'RSSMRA85T10ARSNO',
+          ),
         );
     }
-    
+
     /**
      * The calculate all possibilities data provider.
      */
-    public function calculateAllPossibilitiesProvider(){
+    public function calculateAllPossibilitiesProvider()
+    {
         return array(
           array(
             new Subject(
               array(
-                "name" => "Mario",
-                "surname" => "Rossi",
-                "birthDate" => "1985-12-10",
-                "gender" => "M",
-                "belfioreCode" => "A562"
+                'name' => 'Mario',
+                'surname' => 'Rossi',
+                'birthDate' => '1985-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
               )
             ),
             array(
-              "RSSMRA85T10A562S",
-              "RSSMRA85T10A56NH",
-              "RSSMRA85T10A5SNT",
-              "RSSMRA85T10ARSNO",
-              "RSSMRA85T1LARSNR",
-              "RSSMRA85TMLARSNC",
-              "RSSMRA8RTMLARSNO",
-              "RSSMRAURTMLARSNL"
-            )
+              'RSSMRA85T10A562S',
+              'RSSMRA85T10A56NH',
+              'RSSMRA85T10A5SNT',
+              'RSSMRA85T10ARSNO',
+              'RSSMRA85T1LARSNR',
+              'RSSMRA85TMLARSNC',
+              'RSSMRA8RTMLARSNO',
+              'RSSMRAURTMLARSNL',
+            ),
           ),
           array(
             new Subject(
               array(
-                "name" => "Roberto",
-                "surname" => "Santi",
-                "birthDate" => "1963-05-08",
-                "gender" => "M",
-                "belfioreCode" => "H501"
+                'name' => 'Roberto',
+                'surname' => 'Santi',
+                'birthDate' => '1963-05-08',
+                'gender' => 'M',
+                'belfioreCode' => 'H501',
               )
             ),
             array(
-              "SNTRRT63E08H501T",
-              "SNTRRT63E08H50ML",
-              "SNTRRT63E08H5LMW",
-              "SNTRRT63E08HRLMR",
-              "SNTRRT63E0UHRLMO",
-              "SNTRRT63ELUHRLMZ",
-              "SNTRRT6PELUHRLML",
-              "SNTRRTSPELUHRLMI"
-            )
-          )
+              'SNTRRT63E08H501T',
+              'SNTRRT63E08H50ML',
+              'SNTRRT63E08H5LMW',
+              'SNTRRT63E08HRLMR',
+              'SNTRRT63E0UHRLMO',
+              'SNTRRT63ELUHRLMZ',
+              'SNTRRT6PELUHRLML',
+              'SNTRRTSPELUHRLMI',
+            ),
+          ),
         );
     }
 }
