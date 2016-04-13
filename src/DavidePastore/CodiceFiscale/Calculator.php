@@ -188,6 +188,7 @@ class Calculator
     private function calculateSurname()
     {
         $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getSurname()));
+        $consonants = preg_replace( '/\s+/', '', $consonants );
         if (strlen($consonants) > 2) {
             $result = substr($consonants, 0, 3);
         } else {
@@ -205,6 +206,7 @@ class Calculator
     private function calculateName()
     {
         $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getName()));
+        $consonants = preg_replace( '/\s+/', '', $consonants );
         if (strlen($consonants) > 3) {
             $result = $consonants[0].$consonants[2].$consonants[3];
         } elseif (strlen($consonants) == 3) {
