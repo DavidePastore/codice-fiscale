@@ -210,6 +210,32 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
             3,
             'RSSMRA85T10ARSNO',
           ),
+          array(
+            new Subject(
+              array(
+                'name' => 'Mario',
+                'surname' => 'De Rossi',
+                'birthDate' => '1990-01-01',
+                'gender' => 'M',
+                'belfioreCode' => 'F839',
+              )
+            ),
+            -1,
+            'DRSMRA90A01F839W',
+          ),
+          array(
+            new Subject(
+              array(
+                'name' => 'Anna Paola',
+                'surname' => 'Rossi',
+                'birthDate' => '1990-01-01',
+                'gender' => 'F',
+                'belfioreCode' => 'F839',
+              )
+            ),
+            -1,
+            'RSSNPL90A41F839J',
+          ),
         );
     }
 
