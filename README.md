@@ -28,8 +28,8 @@ How to use
 Use the calculator to calculate the codice fiscale.
 
 ```php
-use DavidePastore\CodiceFiscale\Calculator;
-use DavidePastore\CodiceFiscale\Subject;
+use CodiceFiscale\Calculator;
+use CodiceFiscale\Subject;
 
 $subject = new Subject(
   array(
@@ -51,8 +51,8 @@ You can also add an array for additional configuration for the `Calculator`. Ava
 - "omocodiaLevel": specifies the level of omocodia that the `Calculator` should consider.
 
 ```php
-use DavidePastore\CodiceFiscale\Calculator;
-use DavidePastore\CodiceFiscale\Subject;
+use CodiceFiscale\Calculator;
+use CodiceFiscale\Subject;
 
 $subject = new Subject(
   array(
@@ -75,8 +75,8 @@ echo $codiceFiscale; //"RSSMRA85T10A562S"
 You can also calculate all codici fiscali that a subject could have (using all 8 available levels).
 
 ```php
-use DavidePastore\CodiceFiscale\Calculator;
-use DavidePastore\CodiceFiscale\Subject;
+use CodiceFiscale\Calculator;
+use CodiceFiscale\Subject;
 
 $subject = new Subject(
   array(
@@ -115,8 +115,8 @@ Use the checker to check if the given codice fiscale is ok for the given `Subjec
 - "omocodiaLevel": the omocodia level to use to check.
 
 ```php
-use DavidePastore\CodiceFiscale\Checker;
-use DavidePastore\CodiceFiscale\Subject;
+use CodiceFiscale\Checker;
+use CodiceFiscale\Subject;
 
 $subject = new Subject(
   array(
@@ -142,8 +142,8 @@ You can also provide as `omocodiaLevel` key, the value of `Checker::ALL_OMOCODIA
 In the following example, the `Subject` would not be valid for the given codice fiscale, but it will be so, cause the check will iterate over all the possibilities for the different omocodia levels.
 
 ```php
-use DavidePastore\CodiceFiscale\Checker;
-use DavidePastore\CodiceFiscale\Subject;
+use CodiceFiscale\Checker;
+use CodiceFiscale\Subject;
 
 $subject = new Subject(
   array(
