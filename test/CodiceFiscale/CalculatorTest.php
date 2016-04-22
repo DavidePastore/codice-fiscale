@@ -1,6 +1,6 @@
 <?php
 
-namespace DavidePastore\CodiceFiscale;
+namespace CodiceFiscale;
 
 /**
  * Test for the Calculator class.

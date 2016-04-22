@@ -1,6 +1,6 @@
 <?php
 
-namespace DavidePastore\CodiceFiscale;
+namespace CodiceFiscale;
 
 /**
  * The subject of the codice fiscale.
