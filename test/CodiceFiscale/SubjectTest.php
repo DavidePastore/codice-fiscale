@@ -14,15 +14,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetName()
     {
-        $subject = new Subject(
-          array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
-            'belfioreCode' => 'A562',
-          )
-        );
+        $subject = new Subject([
+          'name'          => 'Mario',
+          'surname'       => 'Rossi',
+          'birthDate'     => '1985-12-10',
+          'gender'        => 'M',
+          'belfioreCode'  => 'A562',
+        ]);
         $actual = $subject->getName();
         $expected = 'Mario';
         $this->assertEquals($expected, $actual);
@@ -33,15 +31,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetName()
     {
-        $subject = new Subject(
-          array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
-            'belfioreCode' => 'A562',
-          )
-        );
+        $subject = new Subject([
+          'name'          => 'Mario',
+          'surname'       => 'Rossi',
+          'birthDate'     => '1985-12-10',
+          'gender'        => 'M',
+          'belfioreCode'  => 'A562',
+        ]);
         $subject->setName('Fabrizio');
         $actual = $subject->getName();
         $expected = 'Fabrizio';
@@ -53,15 +49,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetSurname()
     {
-        $subject = new Subject(
-          array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
-            'belfioreCode' => 'A562',
-          )
-        );
+        $subject = new Subject([
+          'name'          => 'Mario',
+          'surname'       => 'Rossi',
+          'birthDate'     => '1985-12-10',
+          'gender'        => 'M',
+          'belfioreCode'  => 'A562',
+        ]);
         $actual = $subject->getSurname();
         $expected = 'Rossi';
         $this->assertEquals($expected, $actual);
@@ -72,15 +66,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetSurname()
     {
-        $subject = new Subject(
-          array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
-            'belfioreCode' => 'A562',
-          )
-        );
+        $subject = new Subject([
+          'name'          => 'Mario',
+          'surname'       => 'Rossi',
+          'birthDate'     => '1985-12-10',
+          'gender'        => 'M',
+          'belfioreCode'  => 'A562',
+        ]);
         $subject->setSurname('Russo');
         $actual = $subject->getSurname();
         $expected = 'Russo';
@@ -92,15 +84,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetBirthDate()
     {
-        $subject = new Subject(
-          array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
-            'belfioreCode' => 'A562',
-          )
-        );
+        $subject = new Subject([
+          'name'          => 'Mario',
+          'surname'       => 'Rossi',
+          'birthDate'     => '1985-12-10',
+          'gender'        => 'M',
+          'belfioreCode'  => 'A562',
+        ]);
         $actual = $subject->getBirthDate();
         $expected = new \DateTime('1985-12-10');
         $this->assertEquals($expected, $actual);
@@ -111,15 +101,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetBirthDate()
     {
-        $subject = new Subject(
-          array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
-            'belfioreCode' => 'A562',
-          )
-        );
+        $subject = new Subject([
+          'name'          => 'Mario',
+          'surname'       => 'Rossi',
+          'birthDate'     => '1985-12-10',
+          'gender'        => 'M',
+          'belfioreCode'  => 'A562',
+        ]);
         $subject->setBirthDate(new \DateTime('1944-01-10'));
         $actual = $subject->getBirthDate();
         $expected = new \DateTime('1944-01-10');
@@ -131,15 +119,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetGender()
     {
-        $subject = new Subject(
-          array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
-            'belfioreCode' => 'A562',
-          )
-        );
+        $subject = new Subject([
+          'name'          => 'Mario',
+          'surname'       => 'Rossi',
+          'birthDate'     => '1985-12-10',
+          'gender'        => 'M',
+          'belfioreCode'  => 'A562',
+        ]);
         $actual = $subject->getGender();
         $expected = 'M';
         $this->assertEquals($expected, $actual);
@@ -150,15 +136,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetGender()
     {
-        $subject = new Subject(
-          array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
-            'belfioreCode' => 'A562',
-          )
-        );
+        $subject = new Subject([
+          'name'          => 'Mario',
+          'surname'       => 'Rossi',
+          'birthDate'     => '1985-12-10',
+          'gender'        => 'M',
+          'belfioreCode'  => 'A562',
+        ]);
         $subject->setGender('F');
         $actual = $subject->getGender();
         $expected = 'F';
@@ -170,15 +154,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetBelfioreCode()
     {
-        $subject = new Subject(
-          array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
-            'belfioreCode' => 'A562',
-          )
-        );
+        $subject = new Subject([
+          'name'          => 'Mario',
+          'surname'       => 'Rossi',
+          'birthDate'     => '1985-12-10',
+          'gender'        => 'M',
+          'belfioreCode'  => 'A562',
+        ]);
         $actual = $subject->getBelfioreCode();
         $expected = 'A562';
         $this->assertEquals($expected, $actual);
@@ -189,15 +171,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetBelfioreCode()
     {
-        $subject = new Subject(
-          array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
-            'belfioreCode' => 'A562',
-          )
-        );
+        $subject = new Subject([
+          'name'          => 'Mario',
+          'surname'       => 'Rossi',
+          'birthDate'     => '1985-12-10',
+          'gender'        => 'M',
+          'belfioreCode'  => 'A562',
+        ]);
         $subject->setBelfioreCode('H501');
         $actual = $subject->getBelfioreCode();
         $expected = 'H501';

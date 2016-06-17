@@ -31,15 +31,13 @@ Use the calculator to calculate the codice fiscale.
 use CodiceFiscale\Calculator;
 use CodiceFiscale\Subject;
 
-$subject = new Subject(
-  array(
+$subject = new Subject([
     "name" => "Mario",
     "surname" => "Rossi",
     "birthDate" => "1985-12-10",
     "gender" => "M",
     "belfioreCode" => "A562"
-  )
-);
+]);
 
 $calculator = new Calculator($subject);
 $codiceFiscale = $calculator->calculate();
@@ -54,19 +52,17 @@ You can also add an array for additional configuration for the `Calculator`. Ava
 use CodiceFiscale\Calculator;
 use CodiceFiscale\Subject;
 
-$subject = new Subject(
-  array(
+$subject = new Subject([
     "name" => "Mario",
     "surname" => "Rossi",
     "birthDate" => "1985-12-10",
     "gender" => "M",
     "belfioreCode" => "A562"
-  )
-);
+]);
 
-$calculator = new Calculator($subject, array(
+$calculator = new Calculator($subject, [
   "omocodiaLevel" => $omocodiaLevel
-));
+]);
 $codiceFiscale = $calculator->calculate();
 echo $codiceFiscale; //"RSSMRA85T10A562S"
 ```
@@ -78,21 +74,19 @@ You can also calculate all codici fiscali that a subject could have (using all 8
 use CodiceFiscale\Calculator;
 use CodiceFiscale\Subject;
 
-$subject = new Subject(
-  array(
+$subject = new Subject([
     "name" => "Mario",
     "surname" => "Rossi",
     "birthDate" => "1985-12-10",
     "gender" => "M",
     "belfioreCode" => "A562"
-  )
-);
+]);
 
 $calculator = new Calculator($subject);
 $codiciFiscali = $calculator->calculateAllPossibilities();
 print_r($codiciFiscali);
 /*
-array(
+[
   "RSSMRA85T10A562S",
   "RSSMRA85T10A56NH",
   "RSSMRA85T10A5SNT",
@@ -101,7 +95,7 @@ array(
   "RSSMRA85TMLARSNC",
   "RSSMRA8RTMLARSNO",
   "RSSMRAURTMLARSNL"
-)
+]
 */
 ```
 
@@ -118,20 +112,18 @@ Use the checker to check if the given codice fiscale is ok for the given `Subjec
 use CodiceFiscale\Checker;
 use CodiceFiscale\Subject;
 
-$subject = new Subject(
-  array(
+$subject = new Subject([
     "name" => "Mario",
     "surname" => "Rossi",
     "birthDate" => "1985-12-10",
     "gender" => "M",
     "belfioreCode" => "A562"
-  )
-);
+]);
 
-$checker = new Checker($subject, array(
+$checker = new Checker($subject, [
   "codiceFiscaleToCheck" => "RSSMRA85T10A562S",
   "omocodiaLevel" => 0
-));
+]);
 
 $response = $checker->check();
 echo $response; // true
@@ -145,20 +137,18 @@ In the following example, the `Subject` would not be valid for the given codice 
 use CodiceFiscale\Checker;
 use CodiceFiscale\Subject;
 
-$subject = new Subject(
-  array(
+$subject = new Subject([
     "name" => "Roberto",
     "surname" => "Santi",
     "birthDate" => "1963-05-08",
     "gender" => "M",
     "belfioreCode" => "H501"
-  )
-);
+]);
 
-$checker = new Checker($subject, array(
+$checker = new Checker($subject, [
   "codiceFiscaleToCheck" => "SNTRRT63E08H50ML",
   "omocodiaLevel" => Checker::ALL_OMOCODIA_LEVELS
-));
+]);
 
 $response = $checker->check();
 echo $response; // true

@@ -24,7 +24,7 @@ class Checker
      * @param Subject $subject The subject.
      * @param $properties Array of additional properties.
      */
-    public function __construct(Subject $subject, $properties = array())
+    public function __construct(Subject $subject, $properties = [])
     {
         $this->subject = $subject;
 
@@ -44,13 +44,13 @@ class Checker
      */
     public function check()
     {
-        $calculator = new Calculator($this->subject, array(
+        $calculator = new Calculator($this->subject, [
             'omocodiaLevel' => $this->omocodiaLevel,
-        ));
+        ]);
         if ($this->omocodiaLevel == self::ALL_OMOCODIA_LEVELS) {
             $values = $calculator->calculateAllPossibilities();
         } else {
-            $values = array($calculator->calculate());
+            $values = [$calculator->calculate()];
         }
 
         return in_array($this->codiceFiscaleToCheck, $values);
