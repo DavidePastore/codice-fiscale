@@ -15,12 +15,12 @@ class Calculator
     /**
      * Array of available vowels.
      */
-    private $vowels = array('A', 'E', 'I', 'O', 'U');
+    private $vowels = ['A', 'E', 'I', 'O', 'U'];
 
     /**
      * Array of all available months.
      */
-    private $months = array(
+    private $months = [
         '1' => 'A',
         '2' => 'B',
         '3' => 'C',
@@ -33,12 +33,12 @@ class Calculator
         '10' => 'R',
         '11' => 'S',
         '12' => 'T',
-    );
+    ];
 
     /**
      * Array of all avaialable odd characters.
      */
-    private $odd = array(
+    private $odd = [
         '0' => 1,
         '1' => 0,
         '2' => 5,
@@ -75,12 +75,12 @@ class Calculator
         'X' => 25,
         'Y' => 24,
         'Z' => 23,
-    );
+    ];
 
     /**
      * Array of all avaialable even characters.
      */
-    private $even = array(
+    private $even = [
         '0' => 0,
         '1' => 1,
         '2' => 2,
@@ -117,12 +117,12 @@ class Calculator
         'X' => 23,
         'Y' => 24,
         'Z' => 25,
-    );
+    ];
 
     /**
      * Array of all avaialable omocodia characters.
      */
-    private $omocodiaCodes = array(
+    private $omocodiaCodes = [
         '0' => 'L',
         '1' => 'M',
         '2' => 'N',
@@ -133,7 +133,7 @@ class Calculator
         '7' => 'T',
         '8' => 'U',
         '9' => 'V',
-    );
+    ];
 
     /**
      * Create a Codice Fiscale instance.
@@ -141,7 +141,7 @@ class Calculator
      * @param Subject $subject The subject that will have the codice fiscale.
      * @param $properties An array with additional properties.
      */
-    public function __construct(Subject $subject, $properties = array())
+    public function __construct(Subject $subject, $properties = [])
     {
         $this->subject = $subject;
 
@@ -171,7 +171,7 @@ class Calculator
      */
     public function calculateAllPossibilities()
     {
-        $allPossibilities = array();
+        $allPossibilities = [];
         for ($i = 0; $i < 8; ++$i) {
             $this->omocodiaLevel = $i;
             $allPossibilities[] = $this->calculate();
@@ -188,7 +188,7 @@ class Calculator
     private function calculateSurname()
     {
         $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getSurname()));
-        $consonants = preg_replace( '/\s+/', '', $consonants );
+        $consonants = preg_replace( '/[\s\'"`]+/', '', $consonants );
         if (strlen($consonants) > 2) {
             $result = substr($consonants, 0, 3);
         } else {
@@ -206,7 +206,7 @@ class Calculator
     private function calculateName()
     {
         $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getName()));
-        $consonants = preg_replace( '/\s+/', '', $consonants );
+        $consonants = preg_replace( '/[\s\'"`]+/', '', $consonants );
         if (strlen($consonants) > 3) {
             $result = $consonants[0].$consonants[2].$consonants[3];
         } elseif (strlen($consonants) == 3) {
