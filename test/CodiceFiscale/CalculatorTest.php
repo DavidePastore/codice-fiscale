@@ -223,6 +223,19 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
             -1,
             'DRSMRA90A01F839W',
           ),
+          array( 
+            new Subject(
+              array(
+                'name'          => 'Mario',
+                'surname'       => "D'Ossi",
+                'birthDate'     => '1990-01-01',
+                'gender'        => 'M',
+                'belfioreCode'  => 'F839',
+              )
+            ), 
+            -1, 
+            'DSSMRA90A01F839X' 
+          ),
           array(
             new Subject(
               array(
