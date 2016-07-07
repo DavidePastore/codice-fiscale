@@ -188,7 +188,7 @@ class Calculator
     private function calculateSurname()
     {
         $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getSurname()));
-        $consonants = preg_replace( '/[\s\'"`]+/', '', $consonants );
+        $consonants = $this->cleanString($consonants);
         if (strlen($consonants) > 2) {
             $result = substr($consonants, 0, 3);
         } else {
@@ -206,7 +206,7 @@ class Calculator
     private function calculateName()
     {
         $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getName()));
-        $consonants = preg_replace( '/[\s\'"`]+/', '', $consonants );
+        $consonants = $this->cleanString($consonants);
         if (strlen($consonants) > 3) {
             $result = $consonants[0].$consonants[2].$consonants[3];
         } elseif (strlen($consonants) == 3) {
@@ -217,17 +217,20 @@ class Calculator
 
         return $result;
     }
-    
+
     /**
      * Calculate small string for the given parameters (used by name and surname).
+     *
      * @param $consonants A consonants string.
      * @param $string The small string.
      * @returns Returns the calculated result for the small string.
      */
     private function calculateSmallString($consonants, $string)
     {
+        $string = $this->cleanString($string);
         $vowels = str_replace(str_split($consonants), '', strtoupper($string));
         $result = substr($consonants.$vowels.'XXX', 0, 3);
+
         return $result;
     }
 
@@ -313,5 +316,16 @@ class Calculator
         }
 
         return $temporaryCodiceFiscale;
+    }
+
+    /**
+     * Clean the string removing some characters.
+     *
+     * @param $string The string to clean.
+     * @returns Returns a clean string.
+     */
+    private function cleanString($string)
+    {
+        return preg_replace('/[\s\'"`]+/', '', $string);
     }
 }
