@@ -21,15 +21,15 @@ class Calculator
      * Array of all available months.
      */
     private $months = array(
-        '1' => 'A',
-        '2' => 'B',
-        '3' => 'C',
-        '4' => 'D',
-        '5' => 'E',
-        '6' => 'H',
-        '7' => 'L',
-        '8' => 'M',
-        '9' => 'P',
+        '1'  => 'A',
+        '2'  => 'B',
+        '3'  => 'C',
+        '4'  => 'D',
+        '5'  => 'E',
+        '6'  => 'H',
+        '7'  => 'L',
+        '8'  => 'M',
+        '9'  => 'P',
         '10' => 'R',
         '11' => 'S',
         '12' => 'T',
@@ -287,7 +287,7 @@ class Calculator
     {
         $sum = 0;
         for (; $i < 15; $i = $i + 2) {
-            $k = $temporaryCodiceFiscale{$i};
+            $k = $temporaryCodiceFiscale[$i];
             $sum = $sum + $dictionaryArray[$k];
         }
 
@@ -305,10 +305,10 @@ class Calculator
         if ($this->omocodiaLevel > 0) {
             $omocodiaLevelApplied = 0;
             for ($i = strlen($temporaryCodiceFiscale) - 1; $i > 0; --$i) {
-                $k = $temporaryCodiceFiscale{$i};
+                $k = $temporaryCodiceFiscale[$i];
                 if ($omocodiaLevelApplied < $this->omocodiaLevel && is_numeric($k)) {
                     $newChar = $this->omocodiaCodes[$k];
-                    $temporaryCodiceFiscale{$i}
+                    $temporaryCodiceFiscale[$i]
                     = $newChar;
                     ++$omocodiaLevelApplied;
                 }

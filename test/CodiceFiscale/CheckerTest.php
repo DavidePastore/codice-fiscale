@@ -18,7 +18,7 @@ class CheckerTest extends \PHPUnit_Framework_TestCase
     {
         $checker = new Checker($subject, array(
             'codiceFiscaleToCheck' => $codiceFiscaleToCheck,
-            'omocodiaLevel' => $omocodiaLevel,
+            'omocodiaLevel'        => $omocodiaLevel,
         ));
         $actual = $checker->check();
         $this->assertEquals($expected, $actual);
@@ -33,10 +33,10 @@ class CheckerTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => 'Rossi',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => 'Rossi',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -47,10 +47,10 @@ class CheckerTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => 'Rossi',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => 'Rossi',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -61,10 +61,10 @@ class CheckerTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Roberto',
-                'surname' => 'Santi',
-                'birthDate' => '1963-05-08',
-                'gender' => 'M',
+                'name'         => 'Roberto',
+                'surname'      => 'Santi',
+                'birthDate'    => '1963-05-08',
+                'gender'       => 'M',
                 'belfioreCode' => 'H501',
               )
             ),

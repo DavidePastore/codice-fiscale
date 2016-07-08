@@ -44,10 +44,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => 'Rossi',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => 'Rossi',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -57,10 +57,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Roberto',
-                'surname' => 'Santini',
-                'birthDate' => '1963-05-08',
-                'gender' => 'M',
+                'name'         => 'Roberto',
+                'surname'      => 'Santini',
+                'birthDate'    => '1963-05-08',
+                'gender'       => 'M',
                 'belfioreCode' => 'H501',
               )
             ),
@@ -70,10 +70,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Davide',
-                'surname' => 'Rossi',
-                'birthDate' => '1989-12-10',
-                'gender' => 'M',
+                'name'         => 'Davide',
+                'surname'      => 'Rossi',
+                'birthDate'    => '1989-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -83,10 +83,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Maria',
-                'surname' => 'Montessori',
-                'birthDate' => '1870-08-31',
-                'gender' => 'F',
+                'name'         => 'Maria',
+                'surname'      => 'Montessori',
+                'birthDate'    => '1870-08-31',
+                'gender'       => 'F',
                 'belfioreCode' => 'C615',
               )
             ),
@@ -96,10 +96,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => 'Rossi',
-                'birthDate' => new \DateTime('1985-12-10'),
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => 'Rossi',
+                'birthDate'    => new \DateTime('1985-12-10'),
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -109,10 +109,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Gianfranco',
-                'surname' => 'Rossi',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => 'Gianfranco',
+                'surname'      => 'Rossi',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -122,10 +122,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => 'Fo',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => 'Fo',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -135,10 +135,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => '',
-                'surname' => 'Rossi',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => '',
+                'surname'      => 'Rossi',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -148,10 +148,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => '',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => '',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -161,10 +161,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => '',
-                'surname' => '',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => '',
+                'surname'      => '',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -174,10 +174,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Roberto',
-                'surname' => 'Santi',
-                'birthDate' => '1963-05-08',
-                'gender' => 'M',
+                'name'         => 'Roberto',
+                'surname'      => 'Santi',
+                'birthDate'    => '1963-05-08',
+                'gender'       => 'M',
                 'belfioreCode' => 'H501',
               )
             ),
@@ -187,10 +187,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => 'Rossi',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => 'Rossi',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -200,10 +200,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => 'Rossi',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => 'Rossi',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -213,10 +213,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => 'De Rossi',
-                'birthDate' => '1990-01-01',
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => 'De Rossi',
+                'birthDate'    => '1990-01-01',
+                'gender'       => 'M',
                 'belfioreCode' => 'F839',
               )
             ),
@@ -226,10 +226,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Anna Paola',
-                'surname' => 'Rossi',
-                'birthDate' => '1990-01-01',
-                'gender' => 'F',
+                'name'         => 'Anna Paola',
+                'surname'      => 'Rossi',
+                'birthDate'    => '1990-01-01',
+                'gender'       => 'F',
                 'belfioreCode' => 'F839',
               )
             ),
@@ -239,10 +239,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => "D'Ossi",
-                'birthDate' => '1990-01-01',
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => "D'Ossi",
+                'birthDate'    => '1990-01-01',
+                'gender'       => 'M',
                 'belfioreCode' => 'F839',
               )
             ),
@@ -252,10 +252,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => "Lu'ay",
-                'surname' => "D'ari",
-                'birthDate' => '1990-01-01',
-                'gender' => 'M',
+                'name'         => "Lu'ay",
+                'surname'      => "D'ari",
+                'birthDate'    => '1990-01-01',
+                'gender'       => 'M',
                 'belfioreCode' => 'F839',
               )
             ),
@@ -274,10 +274,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Mario',
-                'surname' => 'Rossi',
-                'birthDate' => '1985-12-10',
-                'gender' => 'M',
+                'name'         => 'Mario',
+                'surname'      => 'Rossi',
+                'birthDate'    => '1985-12-10',
+                'gender'       => 'M',
                 'belfioreCode' => 'A562',
               )
             ),
@@ -295,10 +295,10 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             new Subject(
               array(
-                'name' => 'Roberto',
-                'surname' => 'Santi',
-                'birthDate' => '1963-05-08',
-                'gender' => 'M',
+                'name'         => 'Roberto',
+                'surname'      => 'Santi',
+                'birthDate'    => '1963-05-08',
+                'gender'       => 'M',
                 'belfioreCode' => 'H501',
               )
             ),

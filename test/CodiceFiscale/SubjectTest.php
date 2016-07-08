@@ -16,10 +16,10 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
     {
         $subject = new Subject(
           array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
+            'name'         => 'Mario',
+            'surname'      => 'Rossi',
+            'birthDate'    => '1985-12-10',
+            'gender'       => 'M',
             'belfioreCode' => 'A562',
           )
         );
@@ -35,10 +35,10 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
     {
         $subject = new Subject(
           array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
+            'name'         => 'Mario',
+            'surname'      => 'Rossi',
+            'birthDate'    => '1985-12-10',
+            'gender'       => 'M',
             'belfioreCode' => 'A562',
           )
         );
@@ -55,10 +55,10 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
     {
         $subject = new Subject(
           array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
+            'name'         => 'Mario',
+            'surname'      => 'Rossi',
+            'birthDate'    => '1985-12-10',
+            'gender'       => 'M',
             'belfioreCode' => 'A562',
           )
         );
@@ -74,10 +74,10 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
     {
         $subject = new Subject(
           array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
+            'name'         => 'Mario',
+            'surname'      => 'Rossi',
+            'birthDate'    => '1985-12-10',
+            'gender'       => 'M',
             'belfioreCode' => 'A562',
           )
         );
@@ -94,10 +94,10 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
     {
         $subject = new Subject(
           array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
+            'name'         => 'Mario',
+            'surname'      => 'Rossi',
+            'birthDate'    => '1985-12-10',
+            'gender'       => 'M',
             'belfioreCode' => 'A562',
           )
         );
@@ -113,10 +113,10 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
     {
         $subject = new Subject(
           array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
+            'name'         => 'Mario',
+            'surname'      => 'Rossi',
+            'birthDate'    => '1985-12-10',
+            'gender'       => 'M',
             'belfioreCode' => 'A562',
           )
         );
@@ -133,10 +133,10 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
     {
         $subject = new Subject(
           array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
+            'name'         => 'Mario',
+            'surname'      => 'Rossi',
+            'birthDate'    => '1985-12-10',
+            'gender'       => 'M',
             'belfioreCode' => 'A562',
           )
         );
@@ -152,10 +152,10 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
     {
         $subject = new Subject(
           array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
+            'name'         => 'Mario',
+            'surname'      => 'Rossi',
+            'birthDate'    => '1985-12-10',
+            'gender'       => 'M',
             'belfioreCode' => 'A562',
           )
         );
@@ -172,10 +172,10 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
     {
         $subject = new Subject(
           array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
+            'name'         => 'Mario',
+            'surname'      => 'Rossi',
+            'birthDate'    => '1985-12-10',
+            'gender'       => 'M',
             'belfioreCode' => 'A562',
           )
         );
@@ -191,10 +191,10 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
     {
         $subject = new Subject(
           array(
-            'name' => 'Mario',
-            'surname' => 'Rossi',
-            'birthDate' => '1985-12-10',
-            'gender' => 'M',
+            'name'         => 'Mario',
+            'surname'      => 'Rossi',
+            'birthDate'    => '1985-12-10',
+            'gender'       => 'M',
             'belfioreCode' => 'A562',
           )
         );
