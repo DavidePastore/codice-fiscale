@@ -185,7 +185,7 @@ class Calculator
      *
      * @returns Returns the surname part of the codice fiscale.
      */
-    private function calculateSurname()
+    public function calculateSurname()
     {
         $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getSurname()));
         $consonants = $this->cleanString($consonants);
@@ -203,7 +203,7 @@ class Calculator
      *
      * @returns Returns the name part of the codice fiscale.
      */
-    private function calculateName()
+    public function calculateName()
     {
         $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getName()));
         $consonants = $this->cleanString($consonants);
@@ -267,7 +267,7 @@ class Calculator
      * @param $temporaryCodiceFiscale The first part of the codice fiscale.
      * @returns Returns the check digit part of the codice fiscale.
      */
-    private function calculateCheckDigit($temporaryCodiceFiscale)
+    public function calculateCheckDigit($temporaryCodiceFiscale)
     {
         $sumEven = $this->calculateSumByDictionary($temporaryCodiceFiscale, $this->even, 1);
         $sumOdd = $this->calculateSumByDictionary($temporaryCodiceFiscale, $this->odd, 0);
