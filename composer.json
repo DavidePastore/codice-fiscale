@@ -24,6 +24,15 @@
         {
             "name": "davidepastore",
             "email": "pasdavide@gmail.com"
+        },
+        {
+            "name": "Antonio Turdo",
+            "homepage": "https://github.com/antonioturdo"
+        }        
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.3.x-dev"
         }
-    ]   
+    }    
 }
