@@ -9,52 +9,46 @@ namespace CodiceFiscale;
  */
 class InverseCalculator extends Validator {
     
-    private $birthDate = null;
-    
     private $belfioreCode = null;
     
-    public function __construct($codiceFiscale, $omocodiaLevel = self::ALL_OMOCODIA_LEVELS, $secular = false) {
-        parent::__construct($codiceFiscale, $omocodiaLevel);
+    /**
+     * Create an InverseCalculator instance.
+     * 
+     * @param string $codiceFiscale
+     * @param boolean $omocodiaAllowed
+     * @param boolean $secular
+     */
+    public function __construct($codiceFiscale, $omocodiaAllowed = true, $secular = false) {
+        parent::__construct($codiceFiscale, $omocodiaAllowed, $secular);
         
         if ($this->isFormallyValid()) {
             $codiceFiscaleWithoutOmocodia = $this->getCodiceFiscaleWithoutOmocodia();
             
-            // calculate month
-            $month = $this->listDecMonth[substr($codiceFiscaleWithoutOmocodia, 8, 1)];
-            
-            // calculate year
-            $year = substr($codiceFiscaleWithoutOmocodia, 6, 2);
-            
-            // calculate century
-            $currentDate = new \DateTime();
-            $currentYear = $currentDate->format('y');
-            $currentCentury = substr($currentDate->format('Y'), 0, 2);
-            $century = $year < $currentYear && !$secular ? $currentCentury : $currentCentury - 1;
-            
-            // calculate birth date
-            $this->birthDate = new \DateTime();
-            $this->birthDate->setDate($century.$year, $month, $this->getDay());
-            $this->birthDate->setTime(0, 0, 0);
-           
             // calculate belfiore code
             $this->belfioreCode = substr($codiceFiscaleWithoutOmocodia, 11, 4);
         }
     }
-    
-    public function getBirthDate() {
-        return $this->birthDate;
-    }
 
+    /**
+     * Return the belfiore code
+     * 
+     * @return string
+     */
     public function getBelfioreCode() {
         return $this->belfioreCode;
     }
 
-    public function getAllData(){
-        return array(
-            "sex" => $this->getSex(),
+    /**
+     * Return the Subject calculated from codice fiscale 
+     * 
+     * @return \CodiceFiscale\Subject
+     */
+    public function getSubject(){
+        return new Subject(array(
+            "gender" => $this->getGender(),
             "birthDate" => $this->getBirthDate(),
-            "befioreCode" => $this->getBelfioreCode()
-                );
+            "belfioreCode" => $this->getBelfioreCode()
+                ));
     }   
     
 }
