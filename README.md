@@ -166,6 +166,8 @@ $response = $checker->check();
 echo $response; // true
 ```
 
+### Formal validation
+
 
 Test
 ----
