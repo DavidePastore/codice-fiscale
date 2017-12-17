@@ -82,7 +82,7 @@ class InverseCalculatorTest extends \PHPUnit_Framework_TestCase
                 'belfioreCode' => 'C615',
               )
             )
-          ),            
+          ),
           array(
             'RSSMRA85T10A562S',
             true,
@@ -122,7 +122,7 @@ class InverseCalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             'RSSXXX85T10A562R',
             true,
-            null,              
+            null,
             new Subject(
               array(
                 'birthDate' => '1985-12-10',
@@ -158,7 +158,7 @@ class InverseCalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             'RSSMRA85T10ARSNO',
             true,
-            null,  
+            null,
             new Subject(
               array(
                 'birthDate' => '1985-12-10',
@@ -170,7 +170,7 @@ class InverseCalculatorTest extends \PHPUnit_Framework_TestCase
           array(
             'DRSMRA90A01F839W',
             true,
-            null,  
+            null,
             new Subject(
               array(
                 'birthDate' => '1990-01-01',
@@ -204,9 +204,9 @@ class InverseCalculatorTest extends \PHPUnit_Framework_TestCase
             ),
           ),
           array(
-            'DRALYU90A01F839U', 
+            'DRALYU90A01F839U',
             true,
-            null,              
+            null,
             new Subject(
               array(
                 'birthDate' => '1990-01-01',

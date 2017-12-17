@@ -7,8 +7,8 @@ namespace CodiceFiscale;
  *
  * @author Antonio Turdo <antonio.turdo@gmail.com>
  */
-class Validator extends AbstractCalculator {
-
+class Validator extends AbstractCalculator
+{
     private $regexs = array(
         0 => '/^[a-z]{6}[0-9]{2}[a-z][0-9]{2}[a-z][0-9]{3}[a-z]$/i',
         1 => '/^[a-z]{6}[0-9]{2}[a-z][0-9]{2}[a-z][0-9]{2}[a-z]{2}$/i',
@@ -39,7 +39,8 @@ class Validator extends AbstractCalculator {
      * @param string $codiceFiscale the codice fiscale to validate
      * @param array $properties  An array with additional properties.
      */
-    public function __construct($codiceFiscale, $properties = array()) {
+    public function __construct($codiceFiscale, $properties = array())
+    {
         $this->codiceFiscale = strtoupper($codiceFiscale);
         
         if (array_key_exists('omocodiaAllowed', $properties)) {
@@ -48,9 +49,9 @@ class Validator extends AbstractCalculator {
         
         if (array_key_exists('century', $properties)) {
             $this->century = $properties['century'];
-        }        
+        }
         
-        try {            
+        try {
             $this->validateLength();
 
             $this->validateFormat();
@@ -69,10 +70,11 @@ class Validator extends AbstractCalculator {
 
     /**
      * Validates length
-     * 
+     *
      * @throws \Exception
      */
-    private function validateLength() {
+    private function validateLength()
+    {
         // check empty
         if (empty($this->codiceFiscale)) {
             throw new \Exception('empty');
@@ -85,11 +87,12 @@ class Validator extends AbstractCalculator {
     }
 
     /**
-     * Validates format 
-     * 
+     * Validates format
+     *
      * @throws \Exception
      */
-    private function validateFormat() {
+    private function validateFormat()
+    {
         $regexpValid = false;
         if (!$this->omocodiaAllowed) {
             // just one regex
@@ -117,22 +120,24 @@ class Validator extends AbstractCalculator {
     
     /**
      * Validates check digit
-     * 
+     *
      * @throws \Exception
      */
-    private function validateCheckDigit() {
+    private function validateCheckDigit()
+    {
         $checkDigit = $this->calculateCheckDigit($this->codiceFiscale);
         if ($checkDigit != $this->codiceFiscale[15]) {
             throw new \Exception('checksum');
-        }        
+        }
     }
     
     /**
      * Validates omocodia and replace with matching chars
-     * 
+     *
      * @throws \Exception
      */
-    private function validateAndReplaceOmocodia() {
+    private function validateAndReplaceOmocodia()
+    {
         // check and replace omocodie
         $this->codiceFiscaleWithoutOmocodia = $this->codiceFiscale;
         for ($omocodiaCheck = 0; $omocodiaCheck < $this->foundOmocodiaLevel; $omocodiaCheck++) {
@@ -147,10 +152,11 @@ class Validator extends AbstractCalculator {
     
     /**
      * Validates birthdate and gender
-     * 
+     *
      * @throws \Exception
      */
-    private function validateBirthDateAndGender() {
+    private function validateBirthDateAndGender()
+    {
         // calculate day and sex
         $day = (int) substr($this->codiceFiscaleWithoutOmocodia, 9, 2);
         $this->gender = $day > 40 ? self::CHR_WOMEN : self::CHR_MALE;
@@ -168,7 +174,7 @@ class Validator extends AbstractCalculator {
         $monthChar = substr($this->codiceFiscaleWithoutOmocodia, 8, 1);
         if (!in_array($monthChar, $this->months)) {
             throw new \Exception('month');
-        }   
+        }
         
         // calculate month
         $month = array_search($monthChar, $this->months);
@@ -196,60 +202,65 @@ class Validator extends AbstractCalculator {
         $birthDate->setTime(0, 0, 0);
         
         $this->birthDate = $birthDate->format('Y-m-d');
-    }    
+    }
 
     /**
      * Return the validation error
-     * 
+     *
      * @return string
      */
-    public function getError() {
+    public function getError()
+    {
         return $this->error;
     }
 
     /**
      * Return true if the provided codice fiscale is valid, false otherwise
-     * 
+     *
      * @return boolean
      */
-    public function isFormallyValid() {
+    public function isFormallyValid()
+    {
         return $this->isValid;
     }
 
     /**
      * Return true if the provided codice fiscale is an omocodia, false otherwise
-     * 
+     *
      * @return boolean
      */
-    public function isOmocodia() {
+    public function isOmocodia()
+    {
         return $this->foundOmocodiaLevel > 0;
     }
 
     /**
      * Return the provided codice fiscale, cleaned up by omocodia
-     * 
+     *
      * @return string
      */
-    protected function getCodiceFiscaleWithoutOmocodia() {
+    protected function getCodiceFiscaleWithoutOmocodia()
+    {
         return $this->codiceFiscaleWithoutOmocodia;
     }
 
     /**
      * Return the birth date
-     * 
+     *
      * @return \DateTime
      */
-    protected function getBirthDate() {
+    protected function getBirthDate()
+    {
         return $this->birthDate;
     }
 
     /**
      * Return the gender
-     * 
+     *
      * @return string
      */
-    protected function getGender() {
+    protected function getGender()
+    {
         return $this->gender;
     }
-
 }

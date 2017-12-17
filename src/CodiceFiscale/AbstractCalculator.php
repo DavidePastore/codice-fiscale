@@ -7,13 +7,14 @@ namespace CodiceFiscale;
  *
  * @author Antonio Turdo <antonio.turdo@gmail.com>
  */
-abstract class AbstractCalculator {
+abstract class AbstractCalculator
+{
     
     // women char
     const CHR_WOMEN = 'F';
     
     // male char
-    const CHR_MALE = 'M';      
+    const CHR_MALE = 'M';
     
     /**
      * Array of all available months.
@@ -132,7 +133,7 @@ abstract class AbstractCalculator {
         '7' => 'T',
         '8' => 'U',
         '9' => 'V',
-    );  
+    );
     
     /**
      * Calculate the sum by the given dictionary for the given temporary codice fiscale.
@@ -151,7 +152,7 @@ abstract class AbstractCalculator {
         }
 
         return $sum;
-    }  
+    }
     
     /**
      * Calculate the check digit.
@@ -165,5 +166,5 @@ abstract class AbstractCalculator {
         $sumOdd = $this->calculateSumByDictionary($temporaryCodiceFiscale, $this->odd, 0);
 
         return chr(($sumOdd + $sumEven) % 26 + 65);
-    }    
+    }
 }

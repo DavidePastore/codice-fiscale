@@ -7,17 +7,18 @@ namespace CodiceFiscale;
  *
  * @author Antonio Turdo <antonio.turdo@gmail.com>
  */
-class InverseCalculator extends Validator {
-    
+class InverseCalculator extends Validator
+{
     private $belfioreCode = null;
     
     /**
      * Create an InverseCalculator instance.
-     * 
+     *
      * @param string $codiceFiscale the codice fiscale to validate
      * @param array $properties  An array with additional properties.
      */
-    public function __construct($codiceFiscale, $properties = array()) {
+    public function __construct($codiceFiscale, $properties = array())
+    {
         parent::__construct($codiceFiscale, $properties);
         
         if ($this->isFormallyValid()) {
@@ -30,24 +31,25 @@ class InverseCalculator extends Validator {
 
     /**
      * Return the belfiore code
-     * 
+     *
      * @return string
      */
-    public function getBelfioreCode() {
+    public function getBelfioreCode()
+    {
         return $this->belfioreCode;
     }
 
     /**
-     * Return the Subject calculated from codice fiscale 
-     * 
+     * Return the Subject calculated from codice fiscale
+     *
      * @return \CodiceFiscale\Subject
      */
-    public function getSubject(){
+    public function getSubject()
+    {
         return new Subject(array(
             "gender" => $this->getGender(),
             "birthDate" => $this->getBirthDate(),
             "belfioreCode" => $this->getBelfioreCode()
                 ));
-    }   
-    
+    }
 }
