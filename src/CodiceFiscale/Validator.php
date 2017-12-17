@@ -9,7 +9,6 @@ namespace CodiceFiscale;
  */
 class Validator extends AbstractCalculator {
 
-    private $error = null;
     private $regexs = array(
         0 => '/^[a-z]{6}[0-9]{2}[a-z][0-9]{2}[a-z][0-9]{3}[a-z]$/i',
         1 => '/^[a-z]{6}[0-9]{2}[a-z][0-9]{2}[a-z][0-9]{2}[a-z]{2}$/i',
@@ -21,31 +20,46 @@ class Validator extends AbstractCalculator {
         7 => '/^[a-z]{16}$/i',
     );
     private $omocodiaPositions = array(14, 13, 12, 10, 9, 7, 6);
+    
+    private $codiceFiscale;
+    private $omocodiaAllowed = true;
+    private $century = null;
+    
     private $foundOmocodiaLevel = null;
     private $codiceFiscaleWithoutOmocodia = null;
     private $birthDate = null;
     private $gender = null;
+    
+    private $error = null;
     private $isValid = false;
 
     /**
      * Create a Validator instance.
      *
      * @param string $codiceFiscale the codice fiscale to validate
-     * @param boolean $omocodiaAllowed whether to accept or not omocodia
+     * @param array $properties  An array with additional properties.
      */
-    public function __construct($codiceFiscale, $omocodiaAllowed = true, $secular = false) {
-        try {
-            $normalizedCodiceFiscale = strtoupper($codiceFiscale);
+    public function __construct($codiceFiscale, $properties = array()) {
+        $this->codiceFiscale = strtoupper($codiceFiscale);
+        
+        if (array_key_exists('omocodiaAllowed', $properties)) {
+            $this->omocodiaAllowed = $properties['omocodiaAllowed'];
+        }
+        
+        if (array_key_exists('century', $properties)) {
+            $this->century = $properties['century'];
+        }        
+        
+        try {            
+            $this->validateLength();
+
+            $this->validateFormat();
+
+            $this->validateCheckDigit();
             
-            $this->validateLength($normalizedCodiceFiscale);
+            $this->validateAndReplaceOmocodia();
 
-            $this->validateFormat($normalizedCodiceFiscale, $omocodiaAllowed);
-
-            $this->validateCheckDigit($normalizedCodiceFiscale);
-            
-            $this->validateAndReplaceOmocodia($normalizedCodiceFiscale);
-
-            $this->validateBirthDateAndGender($secular);
+            $this->validateBirthDateAndGender();
 
             $this->isValid = true;
         } catch (\Exception $e) {
@@ -56,17 +70,16 @@ class Validator extends AbstractCalculator {
     /**
      * Validates length
      * 
-     * @param string $codiceFiscale
      * @throws \Exception
      */
-    private function validateLength($codiceFiscale) {
+    private function validateLength() {
         // check empty
-        if (empty($codiceFiscale)) {
+        if (empty($this->codiceFiscale)) {
             throw new \Exception('empty');
         }
 
         // check length
-        if (strlen($codiceFiscale) !== 16) {
+        if (strlen($this->codiceFiscale) !== 16) {
             throw new \Exception('length');
         }
     }
@@ -74,15 +87,13 @@ class Validator extends AbstractCalculator {
     /**
      * Validates format 
      * 
-     * @param string $codiceFiscale
-     * @param boolean $omocodiaAllowed
      * @throws \Exception
      */
-    private function validateFormat($codiceFiscale, $omocodiaAllowed) {
+    private function validateFormat() {
         $regexpValid = false;
-        if (!$omocodiaAllowed) {
+        if (!$this->omocodiaAllowed) {
             // just one regex
-            if (preg_match($this->regexs[0], $codiceFiscale)) {
+            if (preg_match($this->regexs[0], $this->codiceFiscale)) {
                 $this->foundOmocodiaLevel = 0;
                 $regexpValid = true;
             }
@@ -90,7 +101,7 @@ class Validator extends AbstractCalculator {
             // all the regex
             $omocodiaLevelApplied = 0;
             foreach ($this->regexs as $regex) {
-                if (preg_match($regex, $codiceFiscale)) {
+                if (preg_match($regex, $this->codiceFiscale)) {
                     $this->foundOmocodiaLevel = $omocodiaLevelApplied;
                     $regexpValid = true;
                     break;
@@ -107,12 +118,11 @@ class Validator extends AbstractCalculator {
     /**
      * Validates check digit
      * 
-     * @param string $codiceFiscale
      * @throws \Exception
      */
-    private function validateCheckDigit($codiceFiscale) {
-        $checkDigit = $this->calculateCheckDigit($codiceFiscale);
-        if ($checkDigit != $codiceFiscale[15]) {
+    private function validateCheckDigit() {
+        $checkDigit = $this->calculateCheckDigit($this->codiceFiscale);
+        if ($checkDigit != $this->codiceFiscale[15]) {
             throw new \Exception('checksum');
         }        
     }
@@ -120,12 +130,11 @@ class Validator extends AbstractCalculator {
     /**
      * Validates omocodia and replace with matching chars
      * 
-     * @param string $codiceFiscale
      * @throws \Exception
      */
-    private function validateAndReplaceOmocodia($codiceFiscale) {
+    private function validateAndReplaceOmocodia() {
         // check and replace omocodie
-        $this->codiceFiscaleWithoutOmocodia = $codiceFiscale;
+        $this->codiceFiscaleWithoutOmocodia = $this->codiceFiscale;
         for ($omocodiaCheck = 0; $omocodiaCheck < $this->foundOmocodiaLevel; $omocodiaCheck++) {
             $positionToCheck = $this->omocodiaPositions[$omocodiaCheck];
             $charToCheck = $this->codiceFiscaleWithoutOmocodia[$positionToCheck];
@@ -141,7 +150,7 @@ class Validator extends AbstractCalculator {
      * 
      * @throws \Exception
      */
-    private function validateBirthDateAndGender($secular) {
+    private function validateBirthDateAndGender() {
         // calculate day and sex
         $day = (int) substr($this->codiceFiscaleWithoutOmocodia, 9, 2);
         $this->gender = $day > 40 ? self::CHR_WOMEN : self::CHR_MALE;
@@ -170,17 +179,23 @@ class Validator extends AbstractCalculator {
         // calculate century
         $currentDate = new \DateTime();
         $currentYear = $currentDate->format('y');
-        $currentCentury = substr($currentDate->format('Y'), 0, 2);
-        $century = $year < $currentYear && !$secular ? $currentCentury : $currentCentury - 1;
+        if (!is_null($this->century)) {
+            $century = $this->century;
+        } else {
+            $currentCentury = substr($currentDate->format('Y'), 0, 2);
+            $century = $year < $currentYear ? $currentCentury : $currentCentury - 1;
+        }
 
         // validate and calculate birth date
         if (!checkdate($month, $day, $century.$year)) {
             throw new \Exception('date');
         }
         
-        $this->birthDate = new \DateTime();
-        $this->birthDate->setDate($century.$year, $month, $day);
-        $this->birthDate->setTime(0, 0, 0);        
+        $birthDate = new \DateTime();
+        $birthDate->setDate($century.$year, $month, $day);
+        $birthDate->setTime(0, 0, 0);
+        
+        $this->birthDate = $birthDate->format('Y-m-d');
     }    
 
     /**
