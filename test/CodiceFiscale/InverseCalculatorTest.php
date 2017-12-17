@@ -14,11 +14,11 @@ class InverseCalculatorTest extends \PHPUnit_Framework_TestCase
      *
      * @dataProvider calculateProvider
      */
-    public function testInverseCalculate($codiceFiscale, $omocodiaAllowed, $secular, $expectedSubject)
+    public function testInverseCalculate($codiceFiscale, $omocodiaAllowed, $century, $expectedSubject)
     {
         $inverseCalculator = new InverseCalculator($codiceFiscale, array(
             'omocodiaAllowed' => $omocodiaAllowed,
-            'secular' => $secular
+            'century' => $century
         ));
         $actual = $inverseCalculator->getSubject();
         $this->assertEquals($expectedSubject->getBelfioreCode(), $actual->getBelfioreCode());
