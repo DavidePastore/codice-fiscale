@@ -248,7 +248,7 @@ class Validator extends AbstractCalculator {
      * 
      * @return string
      */
-    public function getGender() {
+    protected function getGender() {
         return $this->gender;
     }
 
