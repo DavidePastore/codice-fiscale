@@ -127,7 +127,7 @@ class Validator extends AbstractCalculator
     {
         $checkDigit = $this->calculateCheckDigit($this->codiceFiscale);
         if ($checkDigit != $this->codiceFiscale[15]) {
-            throw new \Exception('checksum');
+            throw new \Exception('The codice fiscale to validate has an invalid control character');
         }
     }
     
@@ -176,13 +176,21 @@ class Validator extends AbstractCalculator
             throw new \Exception('The codice fiscale to validate has an invalid character for birth month');
         }
         
-        // calculate month
+        // calculate month, year and century
         $month = array_search($monthChar, $this->months);
-
-        // calculate year
         $year = substr($this->codiceFiscaleWithoutOmocodia, 6, 2);
+        $century = $this->calculateCentury($year);
 
-        // calculate century
+        // validate and calculate birth date
+        if (!checkdate($month, $day, $century.$year)) {
+            throw new \Exception('The codice fiscale to validate has an non existent birth date');
+        }
+        
+        $this->birthDate = new \DateTime();
+        $this->birthDate->setDate($century.$year, $month, $day)->format('Y-m-d');
+    }
+    
+    private function calculateCentury($year) {
         $currentDate = new \DateTime();
         $currentYear = $currentDate->format('y');
         if (!is_null($this->century)) {
@@ -190,18 +198,9 @@ class Validator extends AbstractCalculator
         } else {
             $currentCentury = substr($currentDate->format('Y'), 0, 2);
             $century = $year < $currentYear ? $currentCentury : $currentCentury - 1;
-        }
-
-        // validate and calculate birth date
-        if (!checkdate($month, $day, $century.$year)) {
-            throw new \Exception('The codice fiscale to validate has an non existent birth date');
-        }
+        }   
         
-        $birthDate = new \DateTime();
-        $birthDate->setDate($century.$year, $month, $day);
-        $birthDate->setTime(0, 0, 0);
-        
-        $this->birthDate = $birthDate->format('Y-m-d');
+        return $century;
     }
 
     /**

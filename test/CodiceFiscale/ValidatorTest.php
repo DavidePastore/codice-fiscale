@@ -86,7 +86,35 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             true,
             false,
             false,
-          )
+          ),
+            // birth day
+          array(
+            'RSSMRA85T99A562U',
+            true,
+            false,
+            false,
+          ),
+            // omocodia character
+          array(
+            'RSSMRA85T10A56AO',
+            true,
+            false,
+            false,
+          ),
+            // month
+          array(
+            'RSSMRA85Z10A562B',
+            true,
+            false,
+            false,
+          ),
+            // date
+          array(
+            'RSSMRA85B30A562G',
+            true,
+            false,
+            false,
+          ),
         );
     }
 }
