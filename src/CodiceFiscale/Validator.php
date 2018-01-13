@@ -191,11 +191,11 @@ class Validator extends AbstractCalculator
     }
     
     /**
-     * 
+     *
      * @param string $year
      * @return string
      */
-    private function calculateCentury($year) 
+    private function calculateCentury($year)
     {
         $currentDate = new \DateTime();
         $currentYear = $currentDate->format('y');
@@ -204,7 +204,7 @@ class Validator extends AbstractCalculator
         } else {
             $currentCentury = substr($currentDate->format('Y'), 0, 2);
             $century = $year < $currentYear ? $currentCentury : $currentCentury - 1;
-        }   
+        }
         
         return $century;
     }
