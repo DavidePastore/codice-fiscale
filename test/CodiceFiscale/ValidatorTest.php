@@ -86,7 +86,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             true,
             false,
             false,
-          )            
+          )
         );
     }
 }
