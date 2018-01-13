@@ -77,12 +77,12 @@ class Validator extends AbstractCalculator
     {
         // check empty
         if (empty($this->codiceFiscale)) {
-            throw new \Exception('empty');
+            throw new \Exception('The codice fiscale to validate is empty');
         }
 
         // check length
         if (strlen($this->codiceFiscale) !== 16) {
-            throw new \Exception('length');
+            throw new \Exception('The codice fiscale to validate has an invalid length');
         }
     }
 
@@ -114,7 +114,7 @@ class Validator extends AbstractCalculator
         }
 
         if (!$regexpValid) {
-            throw new \Exception('format');
+            throw new \Exception('The codice fiscale to validate has an invalid format');
         }
     }
     
@@ -144,7 +144,7 @@ class Validator extends AbstractCalculator
             $positionToCheck = $this->omocodiaPositions[$omocodiaCheck];
             $charToCheck = $this->codiceFiscaleWithoutOmocodia[$positionToCheck];
             if (!in_array($charToCheck, $this->omocodiaCodes)) {
-                throw new \Exception('omocodia');
+                throw new \Exception('The codice fiscale to validate has an invalid character');
             }
             $this->codiceFiscaleWithoutOmocodia[$positionToCheck] = array_search($charToCheck, $this->omocodiaCodes);
         }
@@ -167,13 +167,13 @@ class Validator extends AbstractCalculator
 
         // check day
         if ($day > 31) {
-            throw new \Exception('day');
+            throw new \Exception('The codice fiscale to validate has invalid characters for birth day');
         }
 
         // check month
         $monthChar = substr($this->codiceFiscaleWithoutOmocodia, 8, 1);
         if (!in_array($monthChar, $this->months)) {
-            throw new \Exception('month');
+            throw new \Exception('The codice fiscale to validate has an invalid character for birth month');
         }
         
         // calculate month
@@ -194,7 +194,7 @@ class Validator extends AbstractCalculator
 
         // validate and calculate birth date
         if (!checkdate($month, $day, $century.$year)) {
-            throw new \Exception('date');
+            throw new \Exception('The codice fiscale to validate has an non existent birth date');
         }
         
         $birthDate = new \DateTime();

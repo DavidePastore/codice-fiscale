@@ -14,7 +14,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
      *
      * @dataProvider validatorProvider
      */
-    public function testValidationTrue($codiceFiscaleToValidate, $omocodiaAllowed, $secular, $expected)
+    public function testValidationTrue($codiceFiscaleToValidate, $omocodiaAllowed, $secular, $isFormallyValid, $isOmocodia = false)
     {
         $validator = new Validator($codiceFiscaleToValidate,
             array('omocodiaAllowed' => $omocodiaAllowed,
@@ -22,7 +22,13 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
                 );
         
         $actual = $validator->isFormallyValid();
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals($isFormallyValid, $actual);
+        
+        $this->{$isFormallyValid ? "assertEquals" : "assertNotEquals"}(null, $validator->getError());
+        
+        if ($isFormallyValid && $isOmocodia) {
+            $this->assertEquals($isOmocodia, $validator->isOmocodia());
+        }
     }
 
     /**
@@ -31,24 +37,56 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     public function validatorProvider()
     {
         return array(
+            // valid
           array(
             'RSSMRA85T10A562S',
             true,
             false,
             true,
           ),
+            // valid altough omocodia not allowed
+          array(
+            'RSSMRA85T10A562S',
+            false,
+            false,
+            true,
+          ),
+           // check digit
           array(
             'RSSMRA85T10A562T',
             true,
             false,
             false,
           ),
+            // valid with omocodia
           array(
             'SNTRRT63E08H50ML',
             true,
             false,
             true,
+            true
           ),
+            // empty
+          array(
+            '',
+            true,
+            false,
+            false,
+          ),
+            // length
+          array(
+            'RSSMRA85T10A562',
+            true,
+            false,
+            false,
+          ),
+            // regexp
+          array(
+            'RS3MRA85T10A562S',
+            true,
+            false,
+            false,
+          )            
         );
     }
 }
