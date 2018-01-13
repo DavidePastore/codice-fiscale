@@ -187,7 +187,7 @@ class Validator extends AbstractCalculator
         }
         
         $this->birthDate = new \DateTime();
-        $this->birthDate->setDate($century.$year, $month, $day)->format('Y-m-d');
+        $this->birthDate->setDate($century.$year, $month, $day)->setTime(0,0,0)->format('Y-m-d');
     }
     
     /**
