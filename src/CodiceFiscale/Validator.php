@@ -190,7 +190,13 @@ class Validator extends AbstractCalculator
         $this->birthDate->setDate($century.$year, $month, $day)->format('Y-m-d');
     }
     
-    private function calculateCentury($year) {
+    /**
+     * 
+     * @param string $year
+     * @return string
+     */
+    private function calculateCentury($year) 
+    {
         $currentDate = new \DateTime();
         $currentYear = $currentDate->format('y');
         if (!is_null($this->century)) {
