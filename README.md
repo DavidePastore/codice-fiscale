@@ -166,6 +166,47 @@ $response = $checker->check();
 echo $response; // true
 ```
 
+### Formal validation
+
+Use the Validator to verify if the given codice fiscale is formally valid. The additional configuration array for the `Validator` has the given available keys:
+- "omocodiaAllowed": whether to allow or not omocodia, defaults to true;
+- "century": for people over 100 years old, it is not possibile to derive unambiguously birth year, so you can specify the century (for example '18' for a person birth in 1899). It allows to check birth date existence. Defaults to null (auto calculation of the century).
+
+```php
+use CodiceFiscale\Validator;
+
+$codiceFiscale = "RSSMRA85T10A562S";
+
+$validator = new Validator($codiceFiscale);
+
+$response = $validator->isFormallyValid();
+echo $response; // true
+```
+
+### Inverse calculation
+
+Use the InverseCalculator to extract birth date, gender and the belfiore code from the given codice fiscale. The additional configuration array for the `InverseCalculator` has the keys already described for the `Validator`.
+
+```php
+use CodiceFiscale\InverseCalculator;
+
+$codiceFiscale = "RSSMRA85T10A562S";
+
+$inverseCalculator = new InverseCalculator($codiceFiscale);
+
+$subject = $inverseCalculator->getSubject();
+var_dump($response);
+// object(CodiceFiscale\Subject)[449]
+//   private 'name' => null
+//   private 'surname' => null
+//   private 'birthDate' => 
+//     object(DateTime)[452]
+//       public 'date' => string '1985-12-10 00:00:00.000000' (length=26)
+//       public 'timezone_type' => int 3
+//       public 'timezone' => string 'Europe/Berlin' (length=13)
+//   private 'gender' => string 'M' (length=1)
+//   private 'belfioreCode' => string 'A562' (length=4)
+```
 
 Test
 ----
