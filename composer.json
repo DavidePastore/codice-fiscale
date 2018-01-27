@@ -18,7 +18,7 @@
         "scrutinizer/ocular": "~1.1"
     },
     "require": {},
-    "license" : "GPL-2.0+",
+    "license" : "GPL-2.0-or-later",
     "type" : "library",
     "authors": [
         {
