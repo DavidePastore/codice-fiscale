@@ -40,7 +40,7 @@ class Calculator extends AbstractCalculator
     public function calculate()
     {
         $temporaryCodiceFiscale = $this->calculateSurname().$this->calculateName().
-               $this->calculateBirthDateAndGender().$this->calculateBelfioreCode();
+                $this->calculateBirthDateAndGender().$this->calculateBelfioreCode();
         $temporaryCodiceFiscale = $this->calculateOmocodia($temporaryCodiceFiscale);
 
         return $temporaryCodiceFiscale.$this->calculateCheckDigit($temporaryCodiceFiscale);
