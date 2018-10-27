@@ -72,6 +72,20 @@ class CheckerTest extends \PHPUnit_Framework_TestCase
             Checker::ALL_OMOCODIA_LEVELS,
             true,
           ),
+          array(
+            new Subject(
+              array(
+                'name' => 'Mario',
+                'surname' => 'Rossi',
+                'birthDate' => '1985-12-10',
+                'gender' => 'M',
+                'belfioreCode' => 'A562',
+              )
+            ),
+            'RSSMRAURTMLAR6NZ',
+            Checker::ALL_OMOCODIA_LEVELS,
+            true,
+          ),
         );
     }
 }
