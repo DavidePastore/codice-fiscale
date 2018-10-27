@@ -212,7 +212,7 @@ Test
 ----
 
 ``` bash
-$ phpunit
+$ vendor\bin\phpunit
 ```
 
 
