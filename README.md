@@ -70,7 +70,7 @@ $calculator = new Calculator($subject, array(
   "omocodiaLevel" => $omocodiaLevel
 ));
 $codiceFiscale = $calculator->calculate();
-echo $codiceFiscale; //"RSSMRA85T10A562S"
+echo $codiceFiscale; //"RSSMRA85T10A56NH"
 ```
 
 
