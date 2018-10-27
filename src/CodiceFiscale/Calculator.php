@@ -153,50 +153,35 @@ class Calculator extends AbstractCalculator
     {
         if ($this->omocodiaLevel > 0) {
             if ($this->omocodiaLevel) {
-                if ($this->omocodiaLevel % 2 == 1) {
-                    $k = $temporaryCodiceFiscale{14};
-                    $newChar = $this->omocodiaCodes[$k];
-                    $temporaryCodiceFiscale{14} = $newChar;
-                }
-
-                if ($this->omocodiaLevel % 4 == 2 || $this->omocodiaLevel % 4 == 3) {
-                    $k = $temporaryCodiceFiscale{13};
-                    $newChar = $this->omocodiaCodes[$k];
-                    $temporaryCodiceFiscale{13} = $newChar;
-                }
-
-                if ($this->omocodiaLevel % 8 >= 4 && $this->omocodiaLevel % 8 <= 7) {
-                    $k = $temporaryCodiceFiscale{12};
-                    $newChar = $this->omocodiaCodes[$k];
-                    $temporaryCodiceFiscale{12} = $newChar;
-                }
-
-                if ($this->omocodiaLevel % 16 >= 8 && $this->omocodiaLevel % 16 <= 15) {
-                    $k = $temporaryCodiceFiscale{10};
-                    $newChar = $this->omocodiaCodes[$k];
-                    $temporaryCodiceFiscale{10} = $newChar;
-                }
-
-                if ($this->omocodiaLevel % 32 >= 16 && $this->omocodiaLevel % 32 <= 31) {
-                    $k = $temporaryCodiceFiscale{9};
-                    $newChar = $this->omocodiaCodes[$k];
-                    $temporaryCodiceFiscale{9} = $newChar;
-                }
-
-                if ($this->omocodiaLevel % 64 >= 32 && $this->omocodiaLevel % 64 <= 63) {
-                    $k = $temporaryCodiceFiscale{7};
-                    $newChar = $this->omocodiaCodes[$k];
-                    $temporaryCodiceFiscale{7} = $newChar;
-                }
-
-                if ($this->omocodiaLevel % 128 >= 64 && $this->omocodiaLevel % 128 <= 127) {
-                    $k = $temporaryCodiceFiscale{6};
-                    $newChar = $this->omocodiaCodes[$k];
-                    $temporaryCodiceFiscale{6} = $newChar;
-                }
+                $temporaryCodiceFiscale = $this->calculateOmocodiaSection(2, $temporaryCodiceFiscale, 1, 1, 14);
+                $temporaryCodiceFiscale = $this->calculateOmocodiaSection(4, $temporaryCodiceFiscale, 2, 3, 13);
+                $temporaryCodiceFiscale = $this->calculateOmocodiaSection(8, $temporaryCodiceFiscale, 4, 7, 12);
+                $temporaryCodiceFiscale = $this->calculateOmocodiaSection(16, $temporaryCodiceFiscale, 8, 15, 10);
+                $temporaryCodiceFiscale = $this->calculateOmocodiaSection(32, $temporaryCodiceFiscale, 16, 31, 9);
+                $temporaryCodiceFiscale = $this->calculateOmocodiaSection(64, $temporaryCodiceFiscale, 32, 63, 7);
+                $temporaryCodiceFiscale = $this->calculateOmocodiaSection(128, $temporaryCodiceFiscale, 64, 127, 6);
             }
         }
 
+        return $temporaryCodiceFiscale;
+    }
+
+    /**
+     * Calculate a section of the omocodia.
+     * 
+     * @param $divider The divider.
+     * @param $temporaryCodiceFiscale The first part of the codice fiscale on which make the substitutions.
+     * @param $startingIndex The starting index.
+     * @param $endingIndex The ending index.
+     * @param $characterIndex The index to use to make the substitutions on the $temporaryCodiceFiscale.
+     * @returns Returns the temporary codice fiscale with the substitutions made.
+     */
+    private function calculateOmocodiaSection($divider, $temporaryCodiceFiscale, $startingIndex, $endingIndex, $characterIndex) {
+        if ($this->omocodiaLevel % $divider >= $startingIndex && $this->omocodiaLevel % $divider <= $endingIndex) {
+            $k = $temporaryCodiceFiscale{$characterIndex};
+            $newChar = $this->omocodiaCodes[$k];
+            $temporaryCodiceFiscale{$characterIndex} = $newChar;
+        }
         return $temporaryCodiceFiscale;
     }
 
