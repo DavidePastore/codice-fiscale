@@ -316,7 +316,7 @@ $codiceFiscale = "RSSMRA85T10A562S";
 $inverseCalculator = new InverseCalculator($codiceFiscale);
 
 $subject = $inverseCalculator->getSubject();
-var_dump($response);
+var_dump($subject);
 // object(CodiceFiscale\Subject)[449]
 //   private 'name' => null
 //   private 'surname' => null
