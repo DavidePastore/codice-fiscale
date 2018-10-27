@@ -6,6 +6,7 @@ namespace CodiceFiscale;
  * Codice Fiscale abstract calculator.
  *
  * @author Antonio Turdo <antonio.turdo@gmail.com>
+ * @author davidepastore
  */
 abstract class AbstractCalculator
 {
@@ -134,6 +135,11 @@ abstract class AbstractCalculator
         '8' => 'U',
         '9' => 'V',
     );
+
+    /**
+     * Array of all avaialable omocodia positions.
+     */
+    protected $omocodiaPositions = array(14, 13, 12, 10, 9, 7, 6);
     
     /**
      * Calculate the sum by the given dictionary for the given temporary codice fiscale.
