@@ -240,25 +240,25 @@ class InverseCalculatorTest extends \PHPUnit_Framework_TestCase
      */
     private function generateAllOmocodiaLevels($subject)
     {
-      $allOmocodiaLevels = array();
-      for($omocodiaLevel = 0; $omocodiaLevel < 128; $omocodiaLevel++) {
-        $calculator = new Calculator($subject, array(
-          'omocodiaLevel' => $omocodiaLevel,
-        ));
-        $allOmocodiaLevels[] = array(
-            $calculator->calculate(),
-            true,
-            null,
-            new Subject(
-              array(
-                'birthDate' => $subject->getBirthDate(),
-                'gender' => $subject->getGender(),
-                'belfioreCode' => $subject->getBelfioreCode(),
-              )
-            )
-        );
-      }
+        $allOmocodiaLevels = array();
+        for ($omocodiaLevel = 0; $omocodiaLevel < 128; $omocodiaLevel++) {
+            $calculator = new Calculator($subject, array(
+              'omocodiaLevel' => $omocodiaLevel,
+            ));
+            $allOmocodiaLevels[] = array(
+                $calculator->calculate(),
+                true,
+                null,
+                new Subject(
+                  array(
+                    'birthDate' => $subject->getBirthDate(),
+                    'gender' => $subject->getGender(),
+                    'belfioreCode' => $subject->getBelfioreCode(),
+                  )
+                )
+            );
+        }
 
-      return $allOmocodiaLevels;
+        return $allOmocodiaLevels;
     }
 }

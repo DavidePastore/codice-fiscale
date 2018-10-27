@@ -284,7 +284,7 @@ class Validator extends AbstractCalculator
             if (!in_array($charToCheck, $this->omocodiaCodes)) {
                 throw new \Exception('The codice fiscale to validate has an invalid character');
             }
-            $newChar = array_search($charToCheck, $this->omocodiaCodes);;
+            $newChar = array_search($charToCheck, $this->omocodiaCodes);
             $this->codiceFiscaleWithoutOmocodia{$characterIndex} = $newChar;
         }
     }
