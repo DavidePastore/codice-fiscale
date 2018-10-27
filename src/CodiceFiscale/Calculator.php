@@ -168,7 +168,7 @@ class Calculator extends AbstractCalculator
 
     /**
      * Calculate a section of the omocodia.
-     * 
+     *
      * @param $divider The divider.
      * @param $temporaryCodiceFiscale The first part of the codice fiscale on which make the substitutions.
      * @param $startingIndex The starting index.
@@ -176,7 +176,8 @@ class Calculator extends AbstractCalculator
      * @param $characterIndex The index to use to make the substitutions on the $temporaryCodiceFiscale.
      * @returns Returns the temporary codice fiscale with the substitutions made.
      */
-    private function calculateOmocodiaSection($divider, $temporaryCodiceFiscale, $startingIndex, $endingIndex, $characterIndex) {
+    private function calculateOmocodiaSection($divider, $temporaryCodiceFiscale, $startingIndex, $endingIndex, $characterIndex)
+    {
         if ($this->omocodiaLevel % $divider >= $startingIndex && $this->omocodiaLevel % $divider <= $endingIndex) {
             $k = $temporaryCodiceFiscale{$characterIndex};
             $newChar = $this->omocodiaCodes[$k];
