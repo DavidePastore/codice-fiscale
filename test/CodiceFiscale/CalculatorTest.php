@@ -262,6 +262,19 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
             -1,
             'DRALYU90A01F839U',
           ),
+          array(
+            new Subject(
+              array(
+                'name' => "Annalisa",
+                'surname' => "Lisà",
+                'birthDate' => '1980-04-04',
+                'gender' => 'F',
+                'belfioreCode' => 'H501',
+              )
+            ),
+            -1,
+            'LSINLS80D44H501F',
+          ),
         );
     }
 
