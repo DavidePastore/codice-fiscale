@@ -86,6 +86,20 @@ class CheckerTest extends \PHPUnit_Framework_TestCase
             Checker::ALL_OMOCODIA_LEVELS,
             true,
           ),
+          array(
+            new Subject(
+              array(
+                'name' => "Annalisa",
+                'surname' => "Lisà",
+                'birthDate' => '1980-04-04',
+                'gender' => 'F',
+                'belfioreCode' => 'H501',
+              )
+            ),
+            'LSINLS80D44H501F',
+            -1,
+            true,
+          ),
         );
     }
 }

@@ -69,12 +69,12 @@ class Calculator extends AbstractCalculator
      */
     private function calculateSurname()
     {
-        $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getSurname()));
-        $consonants = $this->cleanString($consonants);
+        $surname = $this->cleanString($this->subject->getSurname());
+        $consonants = str_replace($this->vowels, '', strtoupper($surname));
         if (strlen($consonants) > 2) {
             $result = substr($consonants, 0, 3);
         } else {
-            $result = $this->calculateSmallString($consonants, $this->subject->getSurname());
+            $result = $this->calculateSmallString($consonants, $surname);
         }
 
         return $result;
@@ -87,14 +87,14 @@ class Calculator extends AbstractCalculator
      */
     private function calculateName()
     {
-        $consonants = str_replace($this->vowels, '', strtoupper($this->subject->getName()));
-        $consonants = $this->cleanString($consonants);
+        $name = $this->cleanString($this->subject->getName());
+        $consonants = str_replace($this->vowels, '', strtoupper($name));
         if (strlen($consonants) > 3) {
             $result = $consonants[0].$consonants[2].$consonants[3];
         } elseif (strlen($consonants) == 3) {
             $result = $consonants;
         } else {
-            $result = $this->calculateSmallString($consonants, $this->subject->getName());
+            $result = $this->calculateSmallString($consonants, $name);
         }
 
         return $result;
@@ -194,6 +194,6 @@ class Calculator extends AbstractCalculator
      */
     private function cleanString($string)
     {
-        return preg_replace('/[\s\'"`]+/', '', $string);
+        return preg_replace(array('/\pM*/u', '/[\s\'"`]+/'), '', \Normalizer::normalize($string, \Normalizer::FORM_D));
     }
 }
