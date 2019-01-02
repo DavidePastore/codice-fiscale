@@ -12,6 +12,8 @@ codice-fiscale
 
 A PHP library to calculate and check the italian tax code (codice fiscale).
 
+*Read this in [Italian](README-it.md).*
+
 
 Install
 -------
