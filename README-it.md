@@ -12,7 +12,7 @@ codice-fiscale
 
 Una libreria PHP per calcolare e verificare i codici fiscali italiani.
 
-*Read this in [English](README.md).*
+*Leggilo in [Inglese](README.md).*
 
 
 Installazione
