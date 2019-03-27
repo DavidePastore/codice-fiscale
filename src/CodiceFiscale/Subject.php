@@ -101,7 +101,6 @@ class Subject
      */
     public function setBirthDate($birthDate)
     {
-
         if (!$birthDate instanceof \DateTimeInterface) {
             $birthDate = new \DateTime($birthDate);
         }
