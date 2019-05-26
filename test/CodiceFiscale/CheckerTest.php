@@ -7,7 +7,7 @@ namespace CodiceFiscale;
  *
  * @author davidepastore
  */
-class CheckerTest extends \PHPUnit_Framework_TestCase
+class CheckerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test for check.

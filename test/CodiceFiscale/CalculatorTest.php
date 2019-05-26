@@ -7,7 +7,7 @@ namespace CodiceFiscale;
  *
  * @author davidepastore
  */
-class CalculatorTest extends \PHPUnit_Framework_TestCase
+class CalculatorTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test for calculate.

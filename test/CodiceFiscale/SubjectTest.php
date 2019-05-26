@@ -7,7 +7,7 @@ namespace CodiceFiscale;
  *
  * @author davidepastore
  */
-class SubjectTest extends \PHPUnit_Framework_TestCase
+class SubjectTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test for getName.
@@ -123,6 +123,46 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
         $subject->setBirthDate(new \DateTime('1944-01-10'));
         $actual = $subject->getBirthDate();
         $expected = new \DateTime('1944-01-10');
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * Test for setBirthDate.
+     */
+    public function testSetBirthDateImmutable()
+    {
+        $subject = new Subject(
+          array(
+            'name' => 'Mario',
+            'surname' => 'Rossi',
+            'birthDate' => '1985-12-10',
+            'gender' => 'M',
+            'belfioreCode' => 'A562',
+          )
+        );
+        $subject->setBirthDate(new \DateTimeImmutable('1944-01-10'));
+        $actual = $subject->getBirthDate();
+        $expected = new \DateTimeImmutable('1944-01-10');
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * Test for setBirthDate.
+     */
+    public function testSetBirthDateFancyConversion()
+    {
+        $subject = new Subject(
+          array(
+            'name' => 'Mario',
+            'surname' => 'Rossi',
+            'birthDate' => '1985-12-10',
+            'gender' => 'M',
+            'belfioreCode' => 'A562',
+          )
+        );
+        $subject->setBirthDate('1944-01-10');
+        $actual = $subject->getBirthDate();
+        $expected = new \DateTimeImmutable('1944-01-10');
         $this->assertEquals($expected, $actual);
     }
 

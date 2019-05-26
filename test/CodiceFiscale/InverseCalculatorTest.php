@@ -8,7 +8,7 @@ namespace CodiceFiscale;
  * @author Antonio Turdo <antonio.turdo@gmail.com>
  * @author davidepastore
  */
-class InverseCalculatorTest extends \PHPUnit_Framework_TestCase
+class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test for inverse calculate.

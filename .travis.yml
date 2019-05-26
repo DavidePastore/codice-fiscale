@@ -2,19 +2,14 @@ language: php
 dist: trusty
 
 php:
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7.0
-  - hhvm
+  - 7.1
+  - 7.2
+  - 7.3
+  - nightly
 
 matrix:
-  include:
-    - php: 5.3
-      dist: precise
   allow_failures:
     - php: hhvm
-    - php: 5.3
       dist: precise
 
 before_script:

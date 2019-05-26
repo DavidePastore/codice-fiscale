@@ -38,10 +38,7 @@ class Subject
         }
 
         if (array_key_exists('birthDate', $properties)) {
-            if (!$properties['birthDate'] instanceof \DateTime) {
-                $properties['birthDate'] = new \DateTime($properties['birthDate']);
-            }
-            $this->birthDate = $properties['birthDate'];
+            $this->setBirthDate($properties['birthDate']);
         }
 
         if (array_key_exists('gender', $properties)) {
@@ -104,6 +101,10 @@ class Subject
      */
     public function setBirthDate($birthDate)
     {
+        if (!$birthDate instanceof \DateTimeInterface) {
+            $birthDate = new \DateTime($birthDate);
+        }
+
         $this->birthDate = $birthDate;
     }
 
