@@ -2,6 +2,8 @@
 
 namespace CodiceFiscale;
 
+use Normalizer;
+
 /**
  * Codice Fiscale calculator.
  *
@@ -21,7 +23,7 @@ class Calculator extends AbstractCalculator
      * Create a Codice Fiscale instance.
      *
      * @param Subject $subject The subject that will have the codice fiscale.
-     * @param $properties An array with additional properties.
+     * @param array $properties An array with additional properties.
      */
     public function __construct(Subject $subject, $properties = array())
     {
@@ -35,7 +37,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the code fiscale.
      *
-     * @returns Returns the complete codice fiscale.
+     * @returns string the complete codice fiscale.
      */
     public function calculate()
     {
@@ -49,7 +51,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate all possibilities for the code fiscale.
      *
-     * @returns Returns the complete codice fiscale.
+     * @return array Returns the complete codice fiscale.
      */
     public function calculateAllPossibilities()
     {
@@ -65,7 +67,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the surname part of the codice fiscale.
      *
-     * @returns Returns the surname part of the codice fiscale.
+     * @return string Returns the surname part of the codice fiscale.
      */
     private function calculateSurname()
     {
@@ -83,7 +85,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the name part of the codice fiscale.
      *
-     * @returns Returns the name part of the codice fiscale.
+     * @return string Returns the name part of the codice fiscale.
      */
     private function calculateName()
     {
@@ -103,9 +105,9 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate small string for the given parameters (used by name and surname).
      *
-     * @param $consonants A consonants string.
-     * @param $string The small string.
-     * @returns Returns the calculated result for the small string.
+     * @param string $consonants   A consonants string.
+     * @param string $string  The small string.
+     * @return string Returns the calculated result for the small string.
      */
     private function calculateSmallString($consonants, $string)
     {
@@ -119,7 +121,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the birth date and the gender.
      *
-     * @returns Returns the birth date and gender part of the codice fiscale.
+     * @returns string Returns the birth date and gender part of the codice fiscale.
      */
     private function calculateBirthDateAndGender()
     {
@@ -136,7 +138,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the Belfiore code.
      *
-     * @returns Returns the Belfiore code.
+     * @return string Returns the Belfiore code.
      */
     private function calculateBelfioreCode()
     {
@@ -146,8 +148,8 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the omocodia case (additional translation).
      *
-     * @param $temporaryCodiceFiscale The first part of the codice fiscale.
-     * @returns Returns the new codice fiscale.
+     * @param $temporaryCodiceFiscale string The first part of the codice fiscale.
+     * @return string
      */
     private function calculateOmocodia($temporaryCodiceFiscale)
     {
@@ -169,12 +171,12 @@ class Calculator extends AbstractCalculator
     /**
      * Replace a section of the omocodia.
      *
-     * @param $divider The divider.
-     * @param $temporaryCodiceFiscale The first part of the codice fiscale on which make the substitutions.
-     * @param $startingIndex The starting index.
-     * @param $endingIndex The ending index.
-     * @param $characterIndex The index to use to make the substitutions on the $temporaryCodiceFiscale.
-     * @returns Returns the temporary codice fiscale with the substitutions made.
+     * @param $divider int The divider.
+     * @param $temporaryCodiceFiscale string The first part of the codice fiscale on which make the substitutions.
+     * @param $startingIndex int The starting index.
+     * @param $endingIndex int The ending index.
+     * @param $characterIndex int The index to use to make the substitutions on the $temporaryCodiceFiscale.
+     * @return string Returns the temporary codice fiscale with the substitutions made.
      */
     private function replaceOmocodiaSection($divider, $temporaryCodiceFiscale, $startingIndex, $endingIndex, $characterIndex)
     {
@@ -187,13 +189,11 @@ class Calculator extends AbstractCalculator
     }
 
     /**
-     * Clean the string removing some characters.
-     *
-     * @param $string The string to clean.
-     * @returns Returns a clean string.
+     * @param $string string The string to clean.
+     * @return string Cleaned string
      */
     private function cleanString($string)
     {
-        return preg_replace(array('/\pM*/u', '/[\s\'"`]+/'), '', \Normalizer::normalize($string, \Normalizer::FORM_D));
+        return preg_replace(array('/\pM*/u', '/[\s\'"`]+/'), '', Normalizer::normalize($string, Normalizer::FORM_D));
     }
 }

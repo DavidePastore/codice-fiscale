@@ -19,10 +19,10 @@ class Checker
     const ALL_OMOCODIA_LEVELS = -1;
 
     /**
-     * Create a Codice Fiscale instance.
+     * Checker constructor.
      *
-     * @param Subject $subject The subject.
-     * @param $properties Array of additional properties.
+     * @param Subject $subject The subject
+     * @param array $properties additional properties.
      */
     public function __construct(Subject $subject, $properties = array())
     {
@@ -40,7 +40,7 @@ class Checker
     /**
      * Check if the given data is ok for the given codice fiscale.
      *
-     * @returns Returns true if the codice fiscale is ok, false otherwise.
+     * @return bool Returns true if the codice fiscale is ok, false otherwise.
      */
     public function check()
     {

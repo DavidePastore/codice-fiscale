@@ -13,11 +13,13 @@
             "" : "src/"
         }
     },
+    "require": {
+        "ext-intl": "*"
+    },
     "require-dev": {
         "scrutinizer/ocular": "~1.1",
         "phpunit/phpunit": "^7"
     },
-    "require": {},
     "license" : "GPL-2.0-or-later",
     "type" : "library",
     "authors": [

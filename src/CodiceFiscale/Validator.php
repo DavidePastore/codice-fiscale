@@ -2,6 +2,9 @@
 
 namespace CodiceFiscale;
 
+use DateTime;
+use Exception;
+
 /**
  * Description of Validator
  *
@@ -183,7 +186,7 @@ class Validator extends AbstractCalculator
             $this->validateBirthDateAndGender();
 
             $this->isValid = true;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->error = $e->getMessage();
         }
     }
@@ -191,25 +194,25 @@ class Validator extends AbstractCalculator
     /**
      * Validates length
      *
-     * @throws \Exception
+     * @throws Exception
      */
     private function validateLength()
     {
         // check empty
         if (empty($this->codiceFiscale)) {
-            throw new \Exception('The codice fiscale to validate is empty');
+            throw new Exception('The codice fiscale to validate is empty');
         }
 
         // check length
         if (strlen($this->codiceFiscale) !== 16) {
-            throw new \Exception('The codice fiscale to validate has an invalid length');
+            throw new Exception('The codice fiscale to validate has an invalid length');
         }
     }
 
     /**
      * Validates format
      *
-     * @throws \Exception
+     * @throws Exception
      */
     private function validateFormat()
     {
@@ -234,27 +237,27 @@ class Validator extends AbstractCalculator
         }
 
         if (!$regexpValid) {
-            throw new \Exception('The codice fiscale to validate has an invalid format');
+            throw new Exception('The codice fiscale to validate has an invalid format');
         }
     }
     
     /**
      * Validates check digit
      *
-     * @throws \Exception
+     * @throws Exception
      */
     private function validateCheckDigit()
     {
         $checkDigit = $this->calculateCheckDigit($this->codiceFiscale);
         if ($checkDigit != $this->codiceFiscale[15]) {
-            throw new \Exception('The codice fiscale to validate has an invalid control character');
+            throw new Exception('The codice fiscale to validate has an invalid control character');
         }
     }
     
     /**
      * Validates omocodia and replace with matching chars
      *
-     * @throws \Exception
+     * @throws Exception
      */
     private function validateAndReplaceOmocodia()
     {
@@ -272,17 +275,18 @@ class Validator extends AbstractCalculator
     /**
      * Replace a section of the omocodia.
      *
-     * @param $divider The divider.
-     * @param $startingIndex The starting index.
-     * @param $endingIndex The ending index.
-     * @param $characterIndex The index to use to make the substitutions on the $codiceFiscaleWithoutOmocodia.
+     * @param int $divider The divider.
+     * @param int $startingIndex The starting index.
+     * @param int $endingIndex The ending index.
+     * @param int $characterIndex The index to use to make the substitutions on the $codiceFiscaleWithoutOmocodia.
+     * @throws Exception
      */
     private function replaceOmocodiaSection($divider, $startingIndex, $endingIndex, $characterIndex)
     {
         if ($this->foundOmocodiaLevel % $divider >= $startingIndex && $this->foundOmocodiaLevel % $divider <= $endingIndex) {
             $charToCheck = $this->codiceFiscaleWithoutOmocodia{$characterIndex};
             if (!in_array($charToCheck, $this->omocodiaCodes)) {
-                throw new \Exception('The codice fiscale to validate has an invalid character');
+                throw new Exception('The codice fiscale to validate has an invalid character');
             }
             $newChar = array_search($charToCheck, $this->omocodiaCodes);
             $this->codiceFiscaleWithoutOmocodia{$characterIndex} = $newChar;
@@ -292,7 +296,7 @@ class Validator extends AbstractCalculator
     /**
      * Validates birthdate and gender
      *
-     * @throws \Exception
+     * @throws Exception
      */
     private function validateBirthDateAndGender()
     {
@@ -306,13 +310,13 @@ class Validator extends AbstractCalculator
 
         // check day
         if ($day > 31) {
-            throw new \Exception('The codice fiscale to validate has invalid characters for birth day');
+            throw new Exception('The codice fiscale to validate has invalid characters for birth day');
         }
 
         // check month
         $monthChar = substr($this->codiceFiscaleWithoutOmocodia, 8, 1);
         if (!in_array($monthChar, $this->months)) {
-            throw new \Exception('The codice fiscale to validate has an invalid character for birth month');
+            throw new Exception('The codice fiscale to validate has an invalid character for birth month');
         }
         
         // calculate month, year and century
@@ -322,21 +326,22 @@ class Validator extends AbstractCalculator
 
         // validate and calculate birth date
         if (!checkdate($month, $day, $century.$year)) {
-            throw new \Exception('The codice fiscale to validate has an non existent birth date');
+            throw new Exception('The codice fiscale to validate has an non existent birth date');
         }
         
-        $this->birthDate = new \DateTime();
+        $this->birthDate = new DateTime();
         $this->birthDate->setDate($century.$year, $month, $day)->setTime(0, 0, 0)->format('Y-m-d');
     }
-    
+
     /**
      *
      * @param string $year
      * @return string
+     * @throws Exception
      */
     private function calculateCentury($year)
     {
-        $currentDate = new \DateTime();
+        $currentDate = new DateTime();
         $currentYear = $currentDate->format('y');
         if (!is_null($this->century)) {
             $century = $this->century;
@@ -391,7 +396,7 @@ class Validator extends AbstractCalculator
     /**
      * Return the birth date
      *
-     * @return \DateTime
+     * @return DateTime
      */
     protected function getBirthDate()
     {
