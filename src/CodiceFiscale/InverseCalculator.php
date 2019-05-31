@@ -17,7 +17,7 @@ class InverseCalculator extends Validator
      * Create an InverseCalculator instance.
      *
      * @param string $codiceFiscale the codice fiscale to validate
-     * @param array $properties  An array with additional properties.
+     * @param array $properties An array with additional properties.
      */
     public function __construct($codiceFiscale, $properties = [])
     {

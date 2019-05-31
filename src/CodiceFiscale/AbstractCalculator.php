@@ -144,9 +144,9 @@ abstract class AbstractCalculator
     /**
      * Calculate the sum by the given dictionary for the given temporary codice fiscale.
      *
-     * @param string $temporaryCodiceFiscale  The temporary codice fiscale.
-     * @param array $dictionaryArray  The dictionary array
-     * @param int $i  The start index value.
+     * @param string $temporaryCodiceFiscale The temporary codice fiscale.
+     * @param array $dictionaryArray The dictionary array
+     * @param int $i The start index value.
      * @return int
      */
     protected function calculateSumByDictionary($temporaryCodiceFiscale, $dictionaryArray, $i)
@@ -163,8 +163,8 @@ abstract class AbstractCalculator
     /**
      * Calculate the check digit.
      *
-     * @param string $temporaryCodiceFiscale  The first part of the codice fiscale.
-     * @return string the check digit part of the codice fiscale.
+     * @param string $temporaryCodiceFiscale The first part of the codice fiscale.
+     * @return string The check digit part of the codice fiscale.
      */
     protected function calculateCheckDigit($temporaryCodiceFiscale)
     {

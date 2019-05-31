@@ -37,7 +37,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the code fiscale.
      *
-     * @returns string the complete codice fiscale.
+     * @returns string The complete codice fiscale.
      */
     public function calculate()
     {
@@ -51,7 +51,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate all possibilities for the code fiscale.
      *
-     * @return array Returns the complete codice fiscale.
+     * @return array The list of all possibilities for the code fiscale.
      */
     public function calculateAllPossibilities()
     {
@@ -67,7 +67,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the surname part of the codice fiscale.
      *
-     * @return string Returns the surname part of the codice fiscale.
+     * @return string The surname part of the codice fiscale.
      */
     private function calculateSurname()
     {
@@ -85,7 +85,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the name part of the codice fiscale.
      *
-     * @return string Returns the name part of the codice fiscale.
+     * @return string The name part of the codice fiscale.
      */
     private function calculateName()
     {
@@ -107,7 +107,7 @@ class Calculator extends AbstractCalculator
      *
      * @param string $consonants   A consonants string.
      * @param string $string  The small string.
-     * @return string Returns the calculated result for the small string.
+     * @return string The calculated result for the small string.
      */
     private function calculateSmallString($consonants, $string)
     {
@@ -121,7 +121,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the birth date and the gender.
      *
-     * @returns string Returns the birth date and gender part of the codice fiscale.
+     * @returns string The birth date and gender part of the codice fiscale.
      */
     private function calculateBirthDateAndGender()
     {
@@ -138,7 +138,7 @@ class Calculator extends AbstractCalculator
     /**
      * Calculate the Belfiore code.
      *
-     * @return string Returns the Belfiore code.
+     * @return string The Belfiore code.
      */
     private function calculateBelfioreCode()
     {
@@ -176,7 +176,7 @@ class Calculator extends AbstractCalculator
      * @param $startingIndex int The starting index.
      * @param $endingIndex int The ending index.
      * @param $characterIndex int The index to use to make the substitutions on the $temporaryCodiceFiscale.
-     * @return string Returns the temporary codice fiscale with the substitutions made.
+     * @return string The temporary codice fiscale with the substitutions made.
      */
     private function replaceOmocodiaSection($divider, $temporaryCodiceFiscale, $startingIndex, $endingIndex, $characterIndex)
     {

@@ -58,7 +58,7 @@ class Subject
     /**
      * Get the name.
      *
-     * @return string Returns the name.
+     * @return string The name.
      */
     public function getName()
     {
@@ -76,7 +76,7 @@ class Subject
     /**
      * Get the name.
      *
-     * @return string Returns the name.
+     * @return string The name.
      */
     public function getSurname()
     {
@@ -85,6 +85,8 @@ class Subject
 
     /**
      * Set the surname.
+     *
+     * @param string $surname
      */
     public function setSurname($surname)
     {
@@ -94,7 +96,7 @@ class Subject
     /**
      * Get the birthDate.
      *
-     * @return DateTime Returns the birthDate.
+     * @return DateTime The birthDate.
      */
     public function getBirthDate()
     {
@@ -103,7 +105,7 @@ class Subject
 
     /**
      * Set the birthDate.
-     * @param $birthDate
+     * @param mixed $birthDate
      * @throws Exception
      */
     public function setBirthDate($birthDate)
@@ -118,7 +120,7 @@ class Subject
     /**
      * Get the gender.
      *
-     * @return string Returns the gender.
+     * @return string The gender.
      */
     public function getGender()
     {
@@ -127,6 +129,8 @@ class Subject
 
     /**
      * Set the gender.
+     *
+     * @param string $gender
      */
     public function setGender($gender)
     {
@@ -136,7 +140,7 @@ class Subject
     /**
      * Get the belfioreCode.
      *
-     * @return string Returns the belfioreCode.
+     * @return string The belfioreCode.
      */
     public function getBelfioreCode()
     {

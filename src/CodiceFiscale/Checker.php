@@ -21,8 +21,8 @@ class Checker
     /**
      * Checker constructor.
      *
-     * @param Subject $subject The subject
-     * @param array $properties additional properties.
+     * @param Subject $subject The subject.
+     * @param array $properties Additional properties.
      */
     public function __construct(Subject $subject, $properties = array())
     {
@@ -40,7 +40,7 @@ class Checker
     /**
      * Check if the given data is ok for the given codice fiscale.
      *
-     * @return bool Returns true if the codice fiscale is ok, false otherwise.
+     * @return bool True if the codice fiscale is ok, false otherwise.
      */
     public function check()
     {
