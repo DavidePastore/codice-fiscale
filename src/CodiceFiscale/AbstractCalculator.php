@@ -140,14 +140,14 @@ abstract class AbstractCalculator
      * Array of all avaialable omocodia positions.
      */
     protected $omocodiaPositions = array(14, 13, 12, 10, 9, 7, 6);
-    
+
     /**
      * Calculate the sum by the given dictionary for the given temporary codice fiscale.
      *
-     * @param $temporaryCodiceFiscale The temporary codice fiscale.
-     * @param $dictionaryArray The dictionary array.
-     * @param $i The start index value.
-     * @returns Returns the sum by the given dictionary for the given temporary codice fiscale.
+     * @param string $temporaryCodiceFiscale The temporary codice fiscale.
+     * @param array $dictionaryArray The dictionary array
+     * @param int $i The start index value.
+     * @return int
      */
     protected function calculateSumByDictionary($temporaryCodiceFiscale, $dictionaryArray, $i)
     {
@@ -159,12 +159,12 @@ abstract class AbstractCalculator
 
         return $sum;
     }
-    
+
     /**
      * Calculate the check digit.
      *
-     * @param $temporaryCodiceFiscale The first part of the codice fiscale.
-     * @returns Returns the check digit part of the codice fiscale.
+     * @param string $temporaryCodiceFiscale The first part of the codice fiscale.
+     * @return string The check digit part of the codice fiscale.
      */
     protected function calculateCheckDigit($temporaryCodiceFiscale)
     {

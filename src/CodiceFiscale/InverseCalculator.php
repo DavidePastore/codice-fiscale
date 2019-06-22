@@ -2,6 +2,8 @@
 
 namespace CodiceFiscale;
 
+use Exception;
+
 /**
  * Description of InverseCalculator
  *
@@ -15,9 +17,9 @@ class InverseCalculator extends Validator
      * Create an InverseCalculator instance.
      *
      * @param string $codiceFiscale the codice fiscale to validate
-     * @param array $properties  An array with additional properties.
+     * @param array $properties An array with additional properties.
      */
-    public function __construct($codiceFiscale, $properties = array())
+    public function __construct($codiceFiscale, $properties = [])
     {
         parent::__construct($codiceFiscale, $properties);
         
@@ -42,7 +44,8 @@ class InverseCalculator extends Validator
     /**
      * Return the Subject calculated from codice fiscale
      *
-     * @return \CodiceFiscale\Subject
+     * @return Subject
+     * @throws Exception
      */
     public function getSubject()
     {

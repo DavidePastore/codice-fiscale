@@ -2,6 +2,10 @@
 
 namespace CodiceFiscale;
 
+use DateTime;
+use DateTimeInterface;
+use Exception;
+
 /**
  * The subject of the codice fiscale.
  *
@@ -25,6 +29,7 @@ class Subject
      *                          - birthDate: the birth date;
      *                          - gender: the gender;
      *                          - belfioreCode: the Belfiore code.
+     * @throws Exception
      */
     public function __construct($properties)
     {
@@ -53,7 +58,7 @@ class Subject
     /**
      * Get the name.
      *
-     * @return Returns the name.
+     * @return string The name.
      */
     public function getName()
     {
@@ -71,7 +76,7 @@ class Subject
     /**
      * Get the name.
      *
-     * @return Returns the name.
+     * @return string The name.
      */
     public function getSurname()
     {
@@ -80,6 +85,8 @@ class Subject
 
     /**
      * Set the surname.
+     *
+     * @param string $surname
      */
     public function setSurname($surname)
     {
@@ -89,7 +96,7 @@ class Subject
     /**
      * Get the birthDate.
      *
-     * @return Returns the birthDate.
+     * @return DateTime The birthDate.
      */
     public function getBirthDate()
     {
@@ -98,11 +105,13 @@ class Subject
 
     /**
      * Set the birthDate.
+     * @param mixed $birthDate
+     * @throws Exception
      */
     public function setBirthDate($birthDate)
     {
-        if (!$birthDate instanceof \DateTimeInterface) {
-            $birthDate = new \DateTime($birthDate);
+        if (!$birthDate instanceof DateTimeInterface) {
+            $birthDate = new DateTime($birthDate);
         }
 
         $this->birthDate = $birthDate;
@@ -111,7 +120,7 @@ class Subject
     /**
      * Get the gender.
      *
-     * @return Returns the gender.
+     * @return string The gender.
      */
     public function getGender()
     {
@@ -120,6 +129,8 @@ class Subject
 
     /**
      * Set the gender.
+     *
+     * @param string $gender
      */
     public function setGender($gender)
     {
@@ -129,7 +140,7 @@ class Subject
     /**
      * Get the belfioreCode.
      *
-     * @return Returns the belfioreCode.
+     * @return string The belfioreCode.
      */
     public function getBelfioreCode()
     {
@@ -138,6 +149,7 @@ class Subject
 
     /**
      * Set the belfioreCode.
+     * @param string $belfioreCode
      */
     public function setBelfioreCode($belfioreCode)
     {
