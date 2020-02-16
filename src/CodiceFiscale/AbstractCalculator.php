@@ -153,7 +153,7 @@ abstract class AbstractCalculator
     {
         $sum = 0;
         for (; $i < 15; $i = $i + 2) {
-            $k = $temporaryCodiceFiscale{$i};
+            $k = $temporaryCodiceFiscale[$i];
             $sum = $sum + $dictionaryArray[$k];
         }
 

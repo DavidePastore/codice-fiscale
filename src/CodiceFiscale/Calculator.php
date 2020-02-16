@@ -181,9 +181,9 @@ class Calculator extends AbstractCalculator
     private function replaceOmocodiaSection($divider, $temporaryCodiceFiscale, $startingIndex, $endingIndex, $characterIndex)
     {
         if ($this->omocodiaLevel % $divider >= $startingIndex && $this->omocodiaLevel % $divider <= $endingIndex) {
-            $k = $temporaryCodiceFiscale{$characterIndex};
+            $k = $temporaryCodiceFiscale[$characterIndex];
             $newChar = $this->omocodiaCodes[$k];
-            $temporaryCodiceFiscale{$characterIndex} = $newChar;
+            $temporaryCodiceFiscale[$characterIndex] = $newChar;
         }
         return $temporaryCodiceFiscale;
     }
