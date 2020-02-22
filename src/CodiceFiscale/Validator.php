@@ -289,7 +289,7 @@ class Validator extends AbstractCalculator
                 throw new Exception('The codice fiscale to validate has an invalid character');
             }
             $newChar = array_search($charToCheck, $this->omocodiaCodes);
-            $this->codiceFiscaleWithoutOmocodia{$characterIndex} = $newChar;
+            $this->codiceFiscaleWithoutOmocodia[$characterIndex] = $newChar;
         }
     }
     
