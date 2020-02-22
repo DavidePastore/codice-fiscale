@@ -284,12 +284,12 @@ class Validator extends AbstractCalculator
     private function replaceOmocodiaSection($divider, $startingIndex, $endingIndex, $characterIndex)
     {
         if ($this->foundOmocodiaLevel % $divider >= $startingIndex && $this->foundOmocodiaLevel % $divider <= $endingIndex) {
-            $charToCheck = $this->codiceFiscaleWithoutOmocodia{$characterIndex};
+            $charToCheck = $this->codiceFiscaleWithoutOmocodia[$characterIndex];
             if (!in_array($charToCheck, $this->omocodiaCodes)) {
                 throw new Exception('The codice fiscale to validate has an invalid character');
             }
             $newChar = array_search($charToCheck, $this->omocodiaCodes);
-            $this->codiceFiscaleWithoutOmocodia{$characterIndex} = $newChar;
+            $this->codiceFiscaleWithoutOmocodia[$characterIndex] = $newChar;
         }
     }
     
