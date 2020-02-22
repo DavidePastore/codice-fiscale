@@ -14,7 +14,7 @@ matrix:
 
 before_script:
   - composer self-update
-  - composer update --prefer-source
+  - composer install
 
 script:
   - vendor/bin/phpunit --testsuite travis-ci
