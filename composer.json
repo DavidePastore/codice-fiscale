@@ -14,11 +14,12 @@
         }
     },
     "require": {
+        "php": "^7.1",
         "ext-intl": "*"
     },
     "require-dev": {
         "scrutinizer/ocular": "~1.1",
-        "phpunit/phpunit": "^7"
+        "phpunit/phpunit": "^7.5 || ^8.5"
     },
     "license" : "GPL-2.0-or-later",
     "type" : "library",
