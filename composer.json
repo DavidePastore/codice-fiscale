@@ -10,7 +10,12 @@
     ],
     "autoload" : {
         "psr-4" : {
-            "" : "src/"
+            "CodiceFiscale\\" : "src/"
+        }
+    },
+    "autoload-dev" : {
+        "psr-4" : {
+            "CodiceFiscale\\" : "test/"
         }
     },
     "require": {
