@@ -7,7 +7,6 @@ codice-fiscale
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-[![Build Status][ico-phpeye]][link-phpeye]
 [![PSR2 Conformance][ico-styleci]][link-styleci]
 
 Una libreria PHP per calcolare e verificare i codici fiscali italiani.
@@ -351,7 +350,6 @@ Se hai delle segnalazioni, aprine una [qui](https://github.com/DavidePastore/cod
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/DavidePastore/codice-fiscale.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/davidepastore/codice-fiscale.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/DavidePastore/codice-fiscale.svg?style=flat-square
-[ico-phpeye]: http://php-eye.com/badge/DavidePastore/codice-fiscale/tested.svg?style=flat-square
 [ico-styleci]: https://styleci.io/repos/46665960/shield
 
 [link-packagist]: https://packagist.org/packages/DavidePastore/codice-fiscale
@@ -359,5 +357,4 @@ Se hai delle segnalazioni, aprine una [qui](https://github.com/DavidePastore/cod
 [link-scrutinizer]: https://scrutinizer-ci.com/g/DavidePastore/codice-fiscale/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/DavidePastore/codice-fiscale
 [link-downloads]: https://packagist.org/packages/DavidePastore/codice-fiscale
-[link-phpeye]: http://php-eye.com/package/DavidePastore/codice-fiscale
 [link-styleci]: https://styleci.io/repos/46665960/
