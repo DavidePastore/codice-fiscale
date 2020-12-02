@@ -15,13 +15,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testGetName()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $actual = $subject->getName();
         $expected = 'Mario';
@@ -34,13 +34,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testSetName()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $subject->setName('Fabrizio');
         $actual = $subject->getName();
@@ -54,13 +54,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testGetSurname()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $actual = $subject->getSurname();
         $expected = 'Rossi';
@@ -73,13 +73,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testSetSurname()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $subject->setSurname('Russo');
         $actual = $subject->getSurname();
@@ -93,13 +93,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testGetBirthDate()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $actual = $subject->getBirthDate();
         $expected = new \DateTime('1985-12-10');
@@ -112,13 +112,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testSetBirthDate()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $subject->setBirthDate(new \DateTime('1944-01-10'));
         $actual = $subject->getBirthDate();
@@ -132,13 +132,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testSetBirthDateImmutable()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $subject->setBirthDate(new \DateTimeImmutable('1944-01-10'));
         $actual = $subject->getBirthDate();
@@ -152,13 +152,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testSetBirthDateFancyConversion()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $subject->setBirthDate('1944-01-10');
         $actual = $subject->getBirthDate();
@@ -172,13 +172,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testGetGender()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $actual = $subject->getGender();
         $expected = 'M';
@@ -191,13 +191,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testSetGender()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $subject->setGender('F');
         $actual = $subject->getGender();
@@ -211,13 +211,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testGetBelfioreCode()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $actual = $subject->getBelfioreCode();
         $expected = 'A562';
@@ -230,13 +230,13 @@ class SubjectTest extends \PHPUnit\Framework\TestCase
     public function testSetBelfioreCode()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
         $subject->setBelfioreCode('H501');
         $actual = $subject->getBelfioreCode();

@@ -41,11 +41,11 @@ class Calculator extends AbstractCalculator
      */
     public function calculate()
     {
-        $temporaryCodiceFiscale = $this->calculateSurname().$this->calculateName().
-                $this->calculateBirthDateAndGender().$this->calculateBelfioreCode();
+        $temporaryCodiceFiscale = $this->calculateSurname() . $this->calculateName() .
+                $this->calculateBirthDateAndGender() . $this->calculateBelfioreCode();
         $temporaryCodiceFiscale = $this->calculateOmocodia($temporaryCodiceFiscale);
 
-        return $temporaryCodiceFiscale.$this->calculateCheckDigit($temporaryCodiceFiscale);
+        return $temporaryCodiceFiscale . $this->calculateCheckDigit($temporaryCodiceFiscale);
     }
 
     /**
@@ -92,7 +92,7 @@ class Calculator extends AbstractCalculator
         $name = $this->cleanString($this->subject->getName());
         $consonants = str_replace($this->vowels, '', strtoupper($name));
         if (strlen($consonants) > 3) {
-            $result = $consonants[0].$consonants[2].$consonants[3];
+            $result = $consonants[0] . $consonants[2] . $consonants[3];
         } elseif (strlen($consonants) == 3) {
             $result = $consonants;
         } else {
@@ -113,7 +113,7 @@ class Calculator extends AbstractCalculator
     {
         $string = $this->cleanString($string);
         $vowels = str_replace(str_split($consonants), '', strtoupper($string));
-        $result = substr($consonants.$vowels.'XXX', 0, 3);
+        $result = substr($consonants . $vowels . 'XXX', 0, 3);
 
         return $result;
     }
@@ -132,7 +132,7 @@ class Calculator extends AbstractCalculator
             $day += 40;
         }
 
-        return $year.$month.$day;
+        return $year . $month . $day;
     }
 
     /**

@@ -143,16 +143,16 @@ class Validator extends AbstractCalculator
         126 => '/^[a-z]{14}[0-9][a-z]$/i', //RSSMRAURTMLARS2W
         127 => '/^[a-z]{16}$/i', //RSSMRAURTMLARSNL
     );
-    
+
     private $codiceFiscale;
     private $omocodiaAllowed = true;
     private $century = null;
-    
+
     private $foundOmocodiaLevel = null;
     private $codiceFiscaleWithoutOmocodia = null;
     private $birthDate = null;
     private $gender = null;
-    
+
     private $error = null;
     private $isValid = false;
 
@@ -165,22 +165,22 @@ class Validator extends AbstractCalculator
     public function __construct($codiceFiscale, $properties = array())
     {
         $this->codiceFiscale = strtoupper($codiceFiscale);
-        
+
         if (array_key_exists('omocodiaAllowed', $properties)) {
             $this->omocodiaAllowed = $properties['omocodiaAllowed'];
         }
-        
+
         if (array_key_exists('century', $properties)) {
             $this->century = $properties['century'];
         }
-        
+
         try {
             $this->validateLength();
 
             $this->validateFormat();
 
             $this->validateCheckDigit();
-            
+
             $this->validateAndReplaceOmocodia();
 
             $this->validateBirthDateAndGender();
@@ -240,7 +240,7 @@ class Validator extends AbstractCalculator
             throw new Exception('The codice fiscale to validate has an invalid format');
         }
     }
-    
+
     /**
      * Validates check digit
      *
@@ -253,7 +253,7 @@ class Validator extends AbstractCalculator
             throw new Exception('The codice fiscale to validate has an invalid control character');
         }
     }
-    
+
     /**
      * Validates omocodia and replace with matching chars
      *
@@ -292,7 +292,7 @@ class Validator extends AbstractCalculator
             $this->codiceFiscaleWithoutOmocodia[$characterIndex] = $newChar;
         }
     }
-    
+
     /**
      * Validates birthdate and gender
      *
@@ -318,19 +318,19 @@ class Validator extends AbstractCalculator
         if (!in_array($monthChar, $this->months)) {
             throw new Exception('The codice fiscale to validate has an invalid character for birth month');
         }
-        
+
         // calculate month, year and century
         $month = array_search($monthChar, $this->months);
         $year = substr($this->codiceFiscaleWithoutOmocodia, 6, 2);
         $century = $this->calculateCentury($year);
 
         // validate and calculate birth date
-        if (!checkdate($month, $day, $century.$year)) {
+        if (!checkdate($month, $day, $century . $year)) {
             throw new Exception('The codice fiscale to validate has an non existent birth date');
         }
-        
+
         $this->birthDate = new DateTime();
-        $this->birthDate->setDate($century.$year, $month, $day)->setTime(0, 0, 0)->format('Y-m-d');
+        $this->birthDate->setDate($century . $year, $month, $day)->setTime(0, 0, 0)->format('Y-m-d');
     }
 
     /**
@@ -349,7 +349,7 @@ class Validator extends AbstractCalculator
             $currentCentury = substr($currentDate->format('Y'), 0, 2);
             $century = $year < $currentYear ? $currentCentury : $currentCentury - 1;
         }
-        
+
         return $century;
     }
 
