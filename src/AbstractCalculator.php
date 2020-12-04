@@ -10,7 +10,6 @@ namespace CodiceFiscale;
  */
 abstract class AbstractCalculator
 {
-
     // women char
     protected const CHR_WOMEN = 'F';
 
