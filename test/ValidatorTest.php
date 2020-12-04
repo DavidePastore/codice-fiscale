@@ -14,8 +14,13 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
      *
      * @dataProvider validatorProvider
      */
-    public function testValidationTrue($codiceFiscaleToValidate, $omocodiaAllowed, $secular, $isFormallyValid, $isOmocodia = false)
-    {
+    public function testValidationTrue(
+        $codiceFiscaleToValidate,
+        $omocodiaAllowed,
+        $secular,
+        $isFormallyValid,
+        $isOmocodia = false
+    ) {
         $validator = new Validator(
             $codiceFiscaleToValidate,
             array('omocodiaAllowed' => $omocodiaAllowed,

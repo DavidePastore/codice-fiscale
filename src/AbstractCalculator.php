@@ -12,10 +12,10 @@ abstract class AbstractCalculator
 {
 
     // women char
-    const CHR_WOMEN = 'F';
+    protected const CHR_WOMEN = 'F';
 
     // male char
-    const CHR_MALE = 'M';
+    protected const CHR_MALE = 'M';
 
     /**
      * Array of all available months.

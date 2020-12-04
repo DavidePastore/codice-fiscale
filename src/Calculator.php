@@ -155,13 +155,55 @@ class Calculator extends AbstractCalculator
     {
         if ($this->omocodiaLevel > 0) {
             if ($this->omocodiaLevel) {
-                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(2, $temporaryCodiceFiscale, 1, 1, $this->omocodiaPositions[0]);
-                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(4, $temporaryCodiceFiscale, 2, 3, $this->omocodiaPositions[1]);
-                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(8, $temporaryCodiceFiscale, 4, 7, $this->omocodiaPositions[2]);
-                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(16, $temporaryCodiceFiscale, 8, 15, $this->omocodiaPositions[3]);
-                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(32, $temporaryCodiceFiscale, 16, 31, $this->omocodiaPositions[4]);
-                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(64, $temporaryCodiceFiscale, 32, 63, $this->omocodiaPositions[5]);
-                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(128, $temporaryCodiceFiscale, 64, 127, $this->omocodiaPositions[6]);
+                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(
+                    2,
+                    $temporaryCodiceFiscale,
+                    1,
+                    1,
+                    $this->omocodiaPositions[0]
+                );
+                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(
+                    4,
+                    $temporaryCodiceFiscale,
+                    2,
+                    3,
+                    $this->omocodiaPositions[1]
+                );
+                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(
+                    8,
+                    $temporaryCodiceFiscale,
+                    4,
+                    7,
+                    $this->omocodiaPositions[2]
+                );
+                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(
+                    16,
+                    $temporaryCodiceFiscale,
+                    8,
+                    15,
+                    $this->omocodiaPositions[3]
+                );
+                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(
+                    32,
+                    $temporaryCodiceFiscale,
+                    16,
+                    31,
+                    $this->omocodiaPositions[4]
+                );
+                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(
+                    64,
+                    $temporaryCodiceFiscale,
+                    32,
+                    63,
+                    $this->omocodiaPositions[5]
+                );
+                $temporaryCodiceFiscale = $this->replaceOmocodiaSection(
+                    128,
+                    $temporaryCodiceFiscale,
+                    64,
+                    127,
+                    $this->omocodiaPositions[6]
+                );
             }
         }
 
@@ -178,8 +220,13 @@ class Calculator extends AbstractCalculator
      * @param $characterIndex int The index to use to make the substitutions on the $temporaryCodiceFiscale.
      * @return string The temporary codice fiscale with the substitutions made.
      */
-    private function replaceOmocodiaSection($divider, $temporaryCodiceFiscale, $startingIndex, $endingIndex, $characterIndex)
-    {
+    private function replaceOmocodiaSection(
+        $divider,
+        $temporaryCodiceFiscale,
+        $startingIndex,
+        $endingIndex,
+        $characterIndex
+    ) {
         if ($this->omocodiaLevel % $divider >= $startingIndex && $this->omocodiaLevel % $divider <= $endingIndex) {
             $k = $temporaryCodiceFiscale[$characterIndex];
             $newChar = $this->omocodiaCodes[$k];

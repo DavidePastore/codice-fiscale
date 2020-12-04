@@ -16,7 +16,7 @@ class Checker
     /**
      * Constant to check for all the omocodia levels.
      */
-    const ALL_OMOCODIA_LEVELS = -1;
+    public const ALL_OMOCODIA_LEVELS = -1;
 
     /**
      * Checker constructor.
