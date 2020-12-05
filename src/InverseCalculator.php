@@ -12,7 +12,7 @@ use Exception;
 class InverseCalculator extends Validator
 {
     private $belfioreCode = null;
-    
+
     /**
      * Create an InverseCalculator instance.
      *
@@ -22,10 +22,10 @@ class InverseCalculator extends Validator
     public function __construct($codiceFiscale, $properties = [])
     {
         parent::__construct($codiceFiscale, $properties);
-        
+
         if ($this->isFormallyValid()) {
             $codiceFiscaleWithoutOmocodia = $this->getCodiceFiscaleWithoutOmocodia();
-            
+
             // calculate belfiore code
             $this->belfioreCode = substr($codiceFiscaleWithoutOmocodia, 11, 4);
         }

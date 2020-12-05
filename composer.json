@@ -24,7 +24,8 @@
     },
     "require-dev": {
         "scrutinizer/ocular": "~1.1",
-        "phpunit/phpunit": "^7.5 || ^8.5"
+        "phpunit/phpunit": "^7.5 || ^8.5",
+        "squizlabs/php_codesniffer": "3.*"
     },
     "license" : "GPL-2.0-or-later",
     "type" : "library",

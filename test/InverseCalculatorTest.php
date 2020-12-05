@@ -36,27 +36,27 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
     public function calculateProvider()
     {
         $subject = new Subject(
-          array(
+            array(
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-          )
+            )
         );
 
         return array_merge(
-          array(
+            array(
             array(
               'RSSMRA85T10A562S',
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                )
+                  )
               ),
             ),
             array(
@@ -64,11 +64,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1963-05-08',
                   'gender' => 'M',
                   'belfioreCode' => 'H501',
-                )
+                  )
               )
             ),
             array(
@@ -76,11 +76,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1989-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                )
+                  )
               )
             ),
             array(
@@ -88,11 +88,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               18,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1870-08-31',
                   'gender' => 'F',
                   'belfioreCode' => 'C615',
-                )
+                  )
               )
             ),
             array(
@@ -100,11 +100,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                )
+                  )
               ),
             ),
             array(
@@ -112,11 +112,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                )
+                  )
               ),
             ),
             array(
@@ -124,11 +124,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                )
+                  )
               ),
             ),
             array(
@@ -136,11 +136,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                )
+                  )
               )
             ),
             array(
@@ -148,11 +148,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1963-05-08',
                   'gender' => 'M',
                   'belfioreCode' => 'H501',
-                )
+                  )
               )
             ),
             array(
@@ -160,11 +160,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                )
+                  )
               )
             ),
             array(
@@ -172,11 +172,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                )
+                  )
               ),
             ),
             array(
@@ -184,11 +184,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1990-01-01',
                   'gender' => 'M',
                   'belfioreCode' => 'F839',
-                )
+                  )
               )
             ),
             array(
@@ -196,11 +196,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1990-01-01',
                   'gender' => 'F',
                   'belfioreCode' => 'F839',
-                )
+                  )
               )
             ),
             array(
@@ -208,11 +208,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1990-01-01',
                   'gender' => 'M',
                   'belfioreCode' => 'F839',
-                )
+                  )
               ),
             ),
             array(
@@ -220,16 +220,16 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
               true,
               null,
               new Subject(
-                array(
+                  array(
                   'birthDate' => '1990-01-01',
                   'gender' => 'M',
                   'belfioreCode' => 'F839',
-                )
+                  )
               )
             ),
-          ),
-          // Handle all the different omocodia levels
-          $this->generateAllOmocodiaLevels($subject)
+            ),
+            // Handle all the different omocodia levels
+            $this->generateAllOmocodiaLevels($subject)
         );
     }
 
@@ -250,11 +250,11 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
                 true,
                 null,
                 new Subject(
-                  array(
+                    array(
                     'birthDate' => $subject->getBirthDate(),
                     'gender' => $subject->getGender(),
                     'belfioreCode' => $subject->getBelfioreCode(),
-                  )
+                    )
                 )
             );
         }
