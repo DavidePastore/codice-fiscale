@@ -11,6 +11,16 @@ use Normalizer;
  */
 class Calculator extends AbstractCalculator
 {
+    /**
+     * Supported diacritics for fiscal code.
+     *
+     * À Á È É Ì Í Ò Ó Ù Ú Â Ä Æ Ç Č Ê Ë Î Ï Ô Ö Œ Û Ü Š Ž ẞ ß
+     *
+     * @see https://dait.interno.gov.it/documenti/circolare-n-1-2008-0.pdf
+     */
+    private const DIACRITICS = array("\u{c0}", "\u{c1}", "\u{c8}", "\u{c9}", "\u{cc}", "\u{cd}", "\u{d2}", "\u{d3}", "\u{d9}", "\u{da}", "\u{c2}", "\u{c4}", "\u{c6}", "\u{c7}", "\u{10c}", "\u{ca}", "\u{cb}", "\u{ce}", "\u{cf}", "\u{d4}", "\u{d6}", "\u{152}", "\u{db}", "\u{dc}", "\u{160}", "\u{17d}", "\u{1e9e}", "\u{df}");
+    private const DIACRITICS_TRANSLITERATED = array('A', 'A', 'E', 'E', 'I', 'I', 'O', 'O', 'U', 'U', 'A', 'AE', 'AE', 'C', 'C', 'E', 'E', 'I', 'I', 'O', 'OE', 'OE', 'U', 'UE', 'S', 'Z', 'SS', 'SS');
+
     private $subject;
     private $omocodiaLevel = 0;
 
@@ -71,8 +81,8 @@ class Calculator extends AbstractCalculator
      */
     private function calculateSurname()
     {
-        $surname = $this->cleanString($this->subject->getSurname());
-        $consonants = str_replace($this->vowels, '', strtoupper($surname));
+        $surname = $this->normalizeNamePart($this->subject->getSurname());
+        $consonants = str_replace($this->vowels, '', $surname);
         if (strlen($consonants) > 2) {
             $result = substr($consonants, 0, 3);
         } else {
@@ -89,8 +99,8 @@ class Calculator extends AbstractCalculator
      */
     private function calculateName()
     {
-        $name = $this->cleanString($this->subject->getName());
-        $consonants = str_replace($this->vowels, '', strtoupper($name));
+        $name = $this->normalizeNamePart($this->subject->getName());
+        $consonants = str_replace($this->vowels, '', $name);
         if (strlen($consonants) > 3) {
             $result = $consonants[0] . $consonants[2] . $consonants[3];
         } elseif (strlen($consonants) == 3) {
@@ -111,8 +121,7 @@ class Calculator extends AbstractCalculator
      */
     private function calculateSmallString($consonants, $string)
     {
-        $string = $this->cleanString($string);
-        $vowels = str_replace(str_split($consonants), '', strtoupper($string));
+        $vowels = str_replace(str_split($consonants), '', $string);
         $result = substr($consonants . $vowels . 'XXX', 0, 3);
 
         return $result;
@@ -237,10 +246,13 @@ class Calculator extends AbstractCalculator
 
     /**
      * @param $string string The string to clean.
-     * @return string Cleaned string
+     * @return string Normalized string
      */
-    private function cleanString($string)
+    private function normalizeNamePart($string)
     {
-        return preg_replace(array('/\pM*/u', '/[\s\'"`]+/'), '', Normalizer::normalize($string, Normalizer::FORM_D));
+        $string = mb_strtoupper(Normalizer::normalize($string));
+        $string = str_replace(self::DIACRITICS, self::DIACRITICS_TRANSLITERATED, $string);
+
+        return preg_replace(array('/[^a-z]/iu'), '', $string);
     }
 }

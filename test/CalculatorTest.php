@@ -275,6 +275,45 @@ class CalculatorTest extends \PHPUnit\Framework\TestCase
             -1,
             'LSINLS80D44H501F',
           ),
+          array(
+            new Subject(
+                array(
+                'name' => "Marco—Antonio",
+                'surname' => "D’Andrea",
+                'birthDate' => '1990-01-01',
+                'gender' => 'M',
+                'belfioreCode' => 'F839',
+                )
+            ),
+            -1,
+            'DNDMCN90A01F839X',
+          ),
+          array(
+            new Subject(
+                array(
+                'name' => "Anna",
+                'surname' => "Betaña",
+                'birthDate' => '1972-04-02',
+                'gender' => 'F',
+                'belfioreCode' => 'H501',
+                )
+            ),
+            -1,
+            'BTENNA72D42H501M',
+          ),
+          array(
+            new Subject(
+                array(
+                'name' => "Žáç",
+                'surname' => "Öß",
+                'birthDate' => '1954-07-01',
+                'gender' => 'M',
+                'belfioreCode' => 'A794',
+                )
+            ),
+            -1,
+            'SSOZCA54L01A794X',
+          ),
         );
     }
 
