@@ -334,7 +334,7 @@ Test
 ----
 
 ``` bash
-$ vendor\bin\phpunit
+$ composer test
 ```
 
 
