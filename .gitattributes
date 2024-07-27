@@ -1,0 +1,6 @@
+/.git*            export-ignore
+/*.yml            export-ignore
+/phpunit.xml.dist export-ignore
+/README.md        export-ignore
+/README-it.md     export-ignore
+/test             export-ignore
