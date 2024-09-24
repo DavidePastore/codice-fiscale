@@ -35,7 +35,7 @@ abstract class AbstractCalculator
     );
 
     /**
-     * Array of all avaialable odd characters.
+     * Array of all available odd characters.
      */
     protected $odd = array(
         '0' => 1,
@@ -77,7 +77,7 @@ abstract class AbstractCalculator
     );
 
     /**
-     * Array of all avaialable even characters.
+     * Array of all available even characters.
      */
     protected $even = array(
         '0' => 0,
@@ -120,7 +120,7 @@ abstract class AbstractCalculator
 
 
     /**
-     * Array of all avaialable omocodia characters.
+     * Array of all available omocodia characters.
      */
     protected $omocodiaCodes = array(
         '0' => 'L',
@@ -136,7 +136,7 @@ abstract class AbstractCalculator
     );
 
     /**
-     * Array of all avaialable omocodia positions.
+     * Array of all available omocodia positions.
      */
     protected $omocodiaPositions = array(14, 13, 12, 10, 9, 7, 6);
 
@@ -151,9 +151,9 @@ abstract class AbstractCalculator
     protected function calculateSumByDictionary($temporaryCodiceFiscale, $dictionaryArray, $i)
     {
         $sum = 0;
-        for (; $i < 15; $i = $i + 2) {
-            $k = $temporaryCodiceFiscale[$i];
-            $sum = $sum + $dictionaryArray[$k];
+        for (; $i < 15; $i += 2) {
+            $k = $temporaryCodiceFiscale[$i] ?? '';
+            $sum += $dictionaryArray[$k] ?? 0;
         }
 
         return $sum;

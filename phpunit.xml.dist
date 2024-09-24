@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<phpunit bootstrap="./vendor/autoload.php">
-
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    colors="true"
+>
     <testsuites>
-        <testsuite name="The project's test suite">
+        <testsuite name="codice-fiscale test suite">
             <directory>./test</directory>
         </testsuite>
     </testsuites>
