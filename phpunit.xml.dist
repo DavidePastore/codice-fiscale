@@ -3,7 +3,7 @@
     colors="true"
 >
     <testsuites>
-        <testsuite name="codice-fiscale test suite">
+        <testsuite name="Codice Fiscale test suite">
             <directory>./test</directory>
         </testsuite>
     </testsuites>
