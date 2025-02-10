@@ -15,16 +15,16 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
      * @dataProvider validatorProvider
      */
     public function testValidationTrue(
-        $codiceFiscaleToValidate,
-        $omocodiaAllowed,
-        $secular,
-        $isFormallyValid,
-        $isOmocodia = false
-    ) {
+        string $codiceFiscaleToValidate,
+        bool $omocodiaAllowed,
+        bool $secular,
+        bool $isFormallyValid,
+        bool $isOmocodia = false
+    ): void {
         $validator = new Validator(
             $codiceFiscaleToValidate,
-            array('omocodiaAllowed' => $omocodiaAllowed,
-                  'secular' => $secular)
+            ['omocodiaAllowed' => $omocodiaAllowed,
+                  'secular' => $secular]
         );
 
         $actual = $validator->isFormallyValid();
@@ -40,87 +40,76 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      * The validator provider.
      */
-    public function validatorProvider()
+    public static function validatorProvider(): array
     {
-        return array(
-            // valid
-          array(
+        return [
+          'valid' => [
             'RSSMRA85T10A562S',
             true,
             false,
             true,
-          ),
-            // valid altough omocodia not allowed
-          array(
+          ],
+          'valid although omocodia not allowed' => [
             'RSSMRA85T10A562S',
             false,
             false,
             true,
-          ),
-           // check digit
-          array(
+          ],
+          'check digit' => [
             'RSSMRA85T10A562T',
             true,
             false,
             false,
-          ),
-            // valid with omocodia
-          array(
+          ],
+          'valid with omocodia' => [
             'SNTRRT63E08H50ML',
             true,
             false,
             true,
             true
-          ),
-            // empty
-          array(
+          ],
+          'empty' => [
             '',
             true,
             false,
             false,
-          ),
-            // length
-          array(
+          ],
+          'length' => [
             'RSSMRA85T10A562',
             true,
             false,
             false,
-          ),
-            // regexp
-          array(
+          ],
+          'regexp' => [
             'RS3MRA85T10A562S',
             true,
             false,
             false,
-          ),
-            // birth day
-          array(
+          ],
+          'birthday' => [
             'RSSMRA85T99A562U',
             true,
             false,
             false,
-          ),
-            // omocodia character
-          array(
+          ],
+          'omocodia character' => [
             'RSSMRA85T10A56AO',
             true,
             false,
             false,
-          ),
-            // month
-          array(
+          ],
+          'month' => [
             'RSSMRA85Z10A562B',
             true,
             false,
             false,
-          ),
-            // date
-          array(
+          ],
+          'date' => [
             'RSSMRA85B30A562G',
             true,
             false,
             false,
-          ),
-        );
+          ],
+        ];
     }
 }

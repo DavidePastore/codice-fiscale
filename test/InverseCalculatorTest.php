@@ -15,12 +15,12 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
      *
      * @dataProvider calculateProvider
      */
-    public function testInverseCalculate($codiceFiscale, $omocodiaAllowed, $century, $expectedSubject)
+    public function testInverseCalculate(string $codiceFiscale, bool $omocodiaAllowed, ?int $century, Subject $expectedSubject): void
     {
-        $inverseCalculator = new InverseCalculator($codiceFiscale, array(
+        $inverseCalculator = new InverseCalculator($codiceFiscale, [
             'omocodiaAllowed' => $omocodiaAllowed,
             'century' => $century
-        ));
+        ]);
         $actual = $inverseCalculator->getSubject();
         $this->assertEquals($expectedSubject->getBelfioreCode(), $actual->getBelfioreCode());
         $this->assertEquals($expectedSubject->getBirthDate(), $actual->getBirthDate());
@@ -29,234 +29,239 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(null, $actual->getSurname());
     }
 
+    public function testInverseCalculatorDoesNotThrowWarnings(): void
+    {
+        $inverseCalculator = new InverseCalculator('RNAMSM74D01H501C');
+        $this->assertInstanceOf(Subject::class, $inverseCalculator->getSubject());
+    }
 
     /**
      * The calculate data provider.
      */
-    public function calculateProvider()
+    public static function calculateProvider(): array
     {
         $subject = new Subject(
-            array(
+            [
             'name' => 'Mario',
             'surname' => 'Rossi',
             'birthDate' => '1985-12-10',
             'gender' => 'M',
             'belfioreCode' => 'A562',
-            )
+            ]
         );
 
         return array_merge(
-            array(
-            array(
+            [
+            [
               'RSSMRA85T10A562S',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                  )
+                  ]
               ),
-            ),
-            array(
+            ],
+            [
               'SNTRRT63E08H501T',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1963-05-08',
                   'gender' => 'M',
                   'belfioreCode' => 'H501',
-                  )
+                  ]
               )
-            ),
-            array(
+            ],
+            [
               'RSSDVD89T10A562S',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1989-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                  )
+                  ]
               )
-            ),
-            array(
+            ],
+            [
               'MNTMRA70M71C615I',
               true,
               18,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1870-08-31',
                   'gender' => 'F',
                   'belfioreCode' => 'C615',
-                  )
+                  ]
               )
-            ),
-            array(
+            ],
+            [
               'RSSMRA85T10A562S',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                  )
+                  ]
               ),
-            ),
-            array(
+            ],
+            [
               'RSSGFR85T10A562I',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                  )
+                  ]
               ),
-            ),
-            array(
+            ],
+            [
               'FOXMRA85T10A562G',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                  )
+                  ]
               ),
-            ),
-            array(
+            ],
+            [
               'RSSXXX85T10A562R',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                  )
+                  ]
               )
-            ),
-            array(
+            ],
+            [
               'SNTRRT63E08H50ML',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1963-05-08',
                   'gender' => 'M',
                   'belfioreCode' => 'H501',
-                  )
+                  ]
               )
-            ),
-            array(
+            ],
+            [
               'RSSMRA85T10A56NH',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                  )
+                  ]
               )
-            ),
-            array(
+            ],
+            [
               'RSSMRA85T10ARSNO',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1985-12-10',
                   'gender' => 'M',
                   'belfioreCode' => 'A562',
-                  )
+                  ]
               ),
-            ),
-            array(
+            ],
+            [
               'DRSMRA90A01F839W',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1990-01-01',
                   'gender' => 'M',
                   'belfioreCode' => 'F839',
-                  )
+                  ]
               )
-            ),
-            array(
+            ],
+            [
               'RSSNPL90A41F839J',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1990-01-01',
                   'gender' => 'F',
                   'belfioreCode' => 'F839',
-                  )
+                  ]
               )
-            ),
-            array(
+            ],
+            [
               'DSSMRA90A01F839X',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1990-01-01',
                   'gender' => 'M',
                   'belfioreCode' => 'F839',
-                  )
+                  ]
               ),
-            ),
-            array(
+            ],
+            [
               'DRALYU90A01F839U',
               true,
               null,
               new Subject(
-                  array(
+                  [
                   'birthDate' => '1990-01-01',
                   'gender' => 'M',
                   'belfioreCode' => 'F839',
-                  )
+                  ]
               )
-            ),
-            ),
+            ],
+            ],
             // Handle all the different omocodia levels
-            $this->generateAllOmocodiaLevels($subject)
+            self::generateAllOmocodiaLevels($subject)
         );
     }
 
     /**
      * Generate all the codici fiscali for the given $subject.
-     * @param $subject The subject of which generate all the codici fiscali.
-     * @returns Returns all the codici fiscali for the given $subject.
+     * @param Subject $subject The subject of which generate all the codici fiscali.
+     * @return array Returns all the codici fiscali for the given $subject.
      */
-    private function generateAllOmocodiaLevels($subject)
+    private static function generateAllOmocodiaLevels(Subject $subject): array
     {
-        $allOmocodiaLevels = array();
+        $allOmocodiaLevels = [];
         for ($omocodiaLevel = 0; $omocodiaLevel < 128; $omocodiaLevel++) {
-            $calculator = new Calculator($subject, array(
+            $calculator = new Calculator($subject, [
               'omocodiaLevel' => $omocodiaLevel,
-            ));
-            $allOmocodiaLevels[] = array(
+            ]);
+            $allOmocodiaLevels[] = [
                 $calculator->calculate(),
                 true,
                 null,
                 new Subject(
-                    array(
+                    [
                     'birthDate' => $subject->getBirthDate(),
                     'gender' => $subject->getGender(),
                     'belfioreCode' => $subject->getBelfioreCode(),
-                    )
+                    ]
                 )
-            );
+            ];
         }
 
         return $allOmocodiaLevels;
