@@ -29,7 +29,7 @@ class InverseCalculatorTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(null, $actual->getSurname());
     }
 
-    public function todotestInverseCalculatorDoesNotThrowWarnings(): void
+    public function testInverseCalculatorDoesNotThrowWarnings(): void
     {
         $inverseCalculator = new InverseCalculator('RNAMSM74D01H501C');
         $this->assertInstanceOf(Subject::class, $inverseCalculator->getSubject());
