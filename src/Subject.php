@@ -111,7 +111,7 @@ class Subject
     public function setBirthDate($birthDate)
     {
         if (!$birthDate instanceof DateTimeInterface) {
-            $birthDate = new DateTime($birthDate);
+            $birthDate = null !== $birthDate ? new DateTime($birthDate) : new DateTime();
         }
 
         $this->birthDate = $birthDate;
